@@ -1,246 +1,466 @@
-DOCTYPE DOCTYPE html>
+tml
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ملحمة نوفمبر 1954 وأبطال الجزائر الخالدون</title>
-    <style>
-        :root {
-            --algerian-green: #006233;
-            --dark-green: #004524;
-            --light-green-bg: #eaf3ed;
-            --pure-white: #ffffff;
-            --algerian-red: #D21034;
-            --dark-gray: #1a202c;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>أول نوفمبر 1954 | ذاكرة وطن</title>
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+<style>
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
+}
 
-        body {
-            background: linear-gradient(135deg, #f0f7f2 0%, #d5e8db 100%);
-            background-attachment: fixed;
-            color: var(--dark-gray);
-            font-family: 'Tahoma', 'Arial', sans-serif;
-            line-height: 2.2;
-            padding: 20px;
-        }
+body {
+  font-family:Tahoma,Arial,sans-serif;
+  background:white;
+  color:#183b2a;
+  line-height:1.9;
+}
 
-        /* رأس الصفحة الأخضر والأبيض الفخم */
-        header {
-            background: linear-gradient(135deg, var(--algerian-green), var(--dark-green));
-            color: var(--pure-white);
-            text-align: center;
-            padding: 55px 20px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 98, 51, 0.35);
-            margin-bottom: 40px;
-            border-bottom: 8px solid var(--algerian-red);
-            border-top: 3px solid rgba(255, 255, 255, 0.3);
-        }
+header {
+  background:#087443;
+  color:white;
+  padding:16px 6%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
 
-        header h1 {
-            font-size: 2.8rem;
-            margin-bottom: 15px;
-            text-shadow: 2px 3px 6px rgba(0,0,0,0.3);
-            color: var(--pure-white);
-        }
+.logo {font-size:23px;font-weight:bold;}
 
-        header p {
-            font-size: 1.2rem;
-            opacity: 0.95;
-            color: #f8fafc;
-        }
+nav a {
+  color:white;
+  text-decoration:none;
+  margin:0 8px;
+  font-size:14px;
+}
 
-        .algeria-symbol {
-            font-size: 2.3rem;
-            color: var(--algerian-red);
-            background: var(--pure-white);
-            display: inline-block;
-            padding: 5px 22px;
-            border-radius: 50px;
-            margin-bottom: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
+nav a:hover {color:#ffe18b;}
 
-        /* قسم المقدمة التاريخية */
-        .intro-section {
-            background: var(--pure-white);
-            max-width: 1000px;
-            margin: 0 auto 45px auto;
-            padding: 35px;
-            border-radius: 18px;
-            box-shadow: 0 8px 25px rgba(0, 98, 51, 0.08);
-            border-right: 8px solid var(--algerian-green);
-            border-left: 2px solid #e2e8f0;
-        }
+.hero {
+  min-height:570px;
+  padding:90px 8%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  color:white;
+  background:
+    linear-gradient(rgba(0,50,25,.76),rgba(0,70,35,.83)),
+    url("https://commons.wikimedia.org/wiki/Special:FilePath/Six_chefs_FLN_-_1954.jpg");
+  background-size:cover;
+  background-position:center;
+}
 
-        .intro-section h2 {
-            color: var(--algerian-green);
-            margin-bottom: 20px;
-            font-size: 2rem;
-        }
+.hero .date {
+  color:#ffe18b;
+  font-size:24px;
+}
 
-        .intro-section p {
-            font-size: 1.15rem;
-            color: #2d3748;
-            text-align: justify;
-        }
+.hero h1 {
+  font-size:clamp(40px,7vw,75px);
+  margin:15px 0;
+}
 
-        /* شبكة عرض الأبطال */
-        .heroes-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+.hero p {
+  max-width:700px;
+  font-size:19px;
+}
 
-        .hero-card {
-            background: var(--pure-white);
-            border-radius: 18px;
-            padding: 25px;
-            text-align: center;
-            box-shadow: 0 8px 25px rgba(0, 98, 51, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-top: 6px solid var(--algerian-green);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
+.hero button {
+  margin-top:30px;
+  padding:13px 32px;
+  border:2px solid white;
+  border-radius:30px;
+  color:#087443;
+  background:white;
+  font-size:17px;
+  cursor:pointer;
+  font-weight:bold;
+}
 
-        .hero-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(0, 98, 51, 0.2);
-        }
+section {padding:65px 8%;}
 
-        .hero-card img {
-            width: 100%;
-            height: 290px;
-            object-fit: cover;
-            border-radius: 12px;
-            border: 3px solid #c6ebd0;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-        }
+.section-title {
+  text-align:center;
+  color:#087443;
+  font-size:32px;
+  margin-bottom:30px;
+}
 
-        .hero-card h3 {
-            margin: 12px 0;
-            color: var(--algerian-green);
-            font-size: 1.4rem;
-            border-bottom: 2px solid var(--light-green-bg);
-            padding-bottom: 10px;
-        }
+.intro {
+  text-align:center;
+  max-width:850px;
+  margin:auto;
+  font-size:18px;
+}
 
-        .hero-card p {
-            color: #4a5568;
-            font-size: 1rem;
-            text-align: justify;
-            flex-grow: 1;
-        }
+.highlight {
+  background:#eaf6ed;
+  border-right:5px solid #087443;
+  padding:25px;
+  border-radius:10px;
+  margin-top:30px;
+}
 
-        footer {
-            text-align: center;
-            margin-top: 60px;
-            padding: 25px;
-            color: var(--dark-green);
-            font-size: 1rem;
-            border-top: 2px solid #b8dfc4;
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 12px;
-            font-weight: bold;
-        }
-    </style>
+.cards {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:22px;
+  margin-top:35px;
+}
+
+.card {
+  padding:18px;
+  border-radius:14px;
+  background:#f0f8f2;
+  border-bottom:4px solid #07804a;
+  transition:.3s;
+  text-align:center;
+}
+
+.card:hover {
+  transform:translateY(-6px);
+  box-shadow:0 8px 25px #0002;
+}
+
+.card h3 {
+  color:#087443;
+  margin:10px 0;
+}
+
+.card img {
+  width:100%;
+  height:240px;
+  object-fit:cover;
+  border-radius:10px;
+}
+
+.timeline {
+  max-width:800px;
+  margin:auto;
+  border-right:3px solid #087443;
+  padding-right:25px;
+}
+
+.event {margin:25px 0;position:relative;}
+
+.event::before {
+  content:"";
+  width:13px;
+  height:13px;
+  background:#d62b35;
+  border-radius:50%;
+  position:absolute;
+  right:-33px;
+  top:12px;
+}
+
+.event h3 {color:#087443;}
+
+.manifesto {
+  background:#087443;
+  color:white;
+  text-align:center;
+}
+
+.manifesto h2 {color:#ffe18b;}
+
+.quote {
+  max-width:800px;
+  margin:20px auto;
+  font-size:21px;
+  font-style:italic;
+}
+
+/* معرض الصور */
+.gallery {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:24px;
+}
+
+.photo-card {
+  background:white;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 5px 20px #0002;
+  border-bottom:4px solid #087443;
+  transition:.3s;
+}
+
+.photo-card:hover {transform:translateY(-6px);}
+
+.photo-card img {
+  width:100%;
+  height:270px;
+  object-fit:cover;
+  display:block;
+}
+
+.photo-card h3 {
+  color:#087443;
+  padding:12px 15px 2px;
+}
+
+.photo-card p {
+  padding:0 15px 15px;
+  color:#555;
+  font-size:14px;
+}
+
+.photo-card a {
+  display:inline-block;
+  color:#087443;
+  padding:0 15px 15px;
+  font-size:13px;
+}
+
+footer {
+  text-align:center;
+  background:#064a2d;
+  color:white;
+  padding:30px;
+}
+
+footer span {color:#f5d46a;}
+
+@media(max-width:650px) {
+  header {justify-content:center;gap:10px;}
+  nav {text-align:center;}
+  nav a {display:inline-block;margin:4px;}
+  section {padding:45px 6%;}
+}
+</style>
 </head>
+
 <body>
 
-    <header>
-        <div class="algeria-symbol">🌙 ★</div>
-        <h1>ملحمة نوفمبر 1954 وأبطال الجزائر الخالدون</h1>
-        <p>تخليداً لذكرى صناع الاستقلال ومفجري أعظم ثورة تحريرية في التاريخ المعاصر</p>
-    </header>
+<header>
+  <div class="logo">🇩🇿 ذاكرة وطن</div>
+  <nav>
+    <a href="#home">الرئيسية</a>
+    <a href="#story">القصة</a>
+    <a href="#leaders">القادة</a>
+    <a href="#timeline">الأحداث</a>
+    <a href="#gallery">الصور</a>
+  </nav>
+</header>
 
-    <div class="intro-section">
-        <h2>إشراقة الفاتح من نوفمبر المجيد</h2>
-        <p>
-            لم تكن ثورة أول نوفمبر 1954 مجرد حدث عابر في تاريخ الجزائر، بل كانت زلزألاً مدمراً دك حصون الاستعمار الفرنسي الغاشم الذي استمر لأكثر من قرن وربع القرن. انطلقت شرارة الكفاح المسلح بفضل ثلة من الرجال والنساء الأبرار، أبطال آمنوا بأن الحرية تُنتزع ولا تُعطى، فقدموا أرواحهم فداءً للوطن المفدى، لتروى شجرة الاستقلال بدمائهم الزكية وتزهر حريَّةً وكرامةً ليبقى اسم الجزائر مرفوعاً في قمم المجد.
-        </p>
+<main>
+
+<!-- الواجهة الرئيسية -->
+<div class="hero" id="home">
+  <div class="date">01 نوفمبر 1954</div>
+  <h1>فجر الحرية</h1>
+  <p>
+    ليلة صنعت تاريخ أمة، وأشعلت شعلة الثورة
+    الجزائرية من أجل الحرية والاستقلال.
+  </p>
+  <button onclick="document.getElementById('story').scrollIntoView()">
+    اكتشف الحكاية
+  </button>
+</div>
+
+<!-- القصة -->
+<section id="story">
+  <h2 class="section-title">حكاية أول نوفمبر</h2>
+  <p class="intro">
+    في ليلة الفاتح من نوفمبر سنة 1954، انطلقت الثورة التحريرية
+    الجزائرية ضد الاستعمار الفرنسي، بعد سنوات طويلة من الاحتلال
+    والمقاومة والنضال. وكانت بداية مرحلة جديدة في تاريخ الجزائر،
+    حمل فيها الشعب سلاحه دفاعاً عن حقه في الحرية والاستقلال.
+  </p>
+
+  <div class="highlight">
+    <h3>لماذا اندلعت الثورة؟</h3>
+    <p>
+      بسبب الاستعمار وسياساته القمعية، وحرمان الشعب الجزائري
+      من حقوقه وحريته، وإصراره على استعادة سيادته الوطنية.
+    </p>
+  </div>
+</section>
+
+<!-- القادة -->
+<section id="leaders" style="background:#f5faf6">
+  <h2 class="section-title">مجموعة الستة التاريخية</h2>
+  <p class="intro">
+    ستة مناضلين قادوا التحضير لإطلاق الثورة التحريرية.
+  </p>
+
+  <div class="cards">
+
+    <div class="card">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Six_chefs_FLN_-_1954.jpg"
+      alt="صورة القادة الستة">
+      <h3>القادة الستة</h3>
+      <p>الصورة التاريخية التي تجمع مفجري الثورة سنة 1954.</p>
     </div>
 
-    <div class="heroes-gallery">
-        <!-- البطل 1 -->
-        <div class="hero-card">
-            <img src="images (10).jpeg" alt="الشهيدة حسيبة بن بوعلي">
-            <h3>1. الشهيدة حسيبة بن بوعلي</h3>
-            <p>أيقونة الفداء والبطولة النسوية في معركة الجزائر. ولدت بالشلف وانخرطت في العمل الفدائي والنضالي مبكراً، لتلتحق بصفوف جيش التحرير الوطني وتستشهد في تفجير منزل القصبة رفقة علي لابوانت وعمر الصغيرة، مخلدة اسمها كرمز للمرأة الجزائرية الثائرة.</p>
-        </div>
-
-        <!-- البطل 2 -->
-        <div class="hero-card">
-            <img src="images (9).jpeg" alt="الشهيد أحمد زبانة">
-            <h3>2. الشهيد أحمد زبانة</h3>
-            <p>أول شهيد يتم تنفيذ حكم الإعدام بالمقصلة في حقّه بسرفاج في جوان 1956. كان بطلاً مغواراً وقائداً عسكرياً شجاعاً في منطقة الغرب الجزائري، استبسل في المعارك وأظهر صلابة إيمانية ووطنية منقطعة النظير جعلت الجلادين يرهبون ثباته حتى وهو على منصة الشهادة.</p>
-        </div>
-
-        <!-- البطل 3 -->
-        <div class="hero-card">
-            <img src="images (18).jpeg" alt="الشهيد مصطفى بن بولعيد">
-            <h3>3. الشهيد مصطفى بن بولعيد</h3>
-            <p>أسد الأوراس وأحد القادة الستة التاريخيين مفجري الثورة. هندس للثورة بحنكة عسكرية وسياسية عالية، وترأس الولاية الأولى التاريخية (الأوراس). تميز بعبقريته النضالية وقدرته الفائقة على تنظيم الصفوف، واستشهد بعد مسيرة جهادية حافلة بالبطولات إثر تفجير جهاز لاسلكي مفخخ.</p>
-        </div>
-
-        <!-- البطل 4 -->
-        <div class="hero-card">
-            <img src="images(07).jpeg" alt="الشهيد العقيد لطفي">
-            <h3>4. الشهيد العقيد لطفي</h3>
-            <p>السياسي والمجاهد العبقري، وقائد الولاية الخامسة التاريخية. عُرف بذكائه الحاد وثقافته الواسعة وشجاعته النادرة في الميدان. استشهد في معركة اسطورية غير متكافئة بجبال بشار دفاعاً عن استقلال الوطن، وترك وصية خالدة تنبض بحب الجزائر والتضحية في سبيلها.</p>
-        </div>
-
-        <!-- البطل 5 -->
-        <div class="hero-card">
-            <img src="images (06).jpeg alt="الشهيد عبان رمضان">
-            <h3>5. الشهيد عبان رمضان</h3>
-            <p>مهندس الثورة والمدبر السياسي البارز، ومنظم مؤتمر الصومام التاريخي (1956). لعب دوراً محورياً في إرساء الهياكل السياسية وتنظيم جبهة التحرير الوطني وجيش التحرير، ووحّد الصفوف الوطنية وفرض الانضباط السياسي للثورة على الساحة الدولية والمحلية.</p>
-        </div>
-
-        <!-- البطل 6 -->
-        <div class="hero-card">
-            <img src="images (05).Jpeg"الشهيد سي الحواس">
-            <h3>6. الشهيد العقيد سي الحواس</h3>
-            <p>بطل الصحراء وقائد الولاية السادسة التاريخية. قاد بحنكة نادرة وصبر كبير معارك ضارية في الجنوب الجزائري الشاسع، ونسق بمهارة بين قيادات الثورة. استشهد رفقة العقيد لطفي في معركة جبل ثامر التاريخية بعد حصار شديد.</p>
-        </div>
-
-        <!-- البطل 7 -->
-        <div class="hero-card">
-            <img src="images (04).Jpeg" alt="الشهيد ديدوش مراد">
-            <h3>7. الشهيد ديدوش مراد</h3>
-            <p>عضو مجموعة الستة التاريخية ومفجر الثورة، ومسؤول المنطقة الثانية (الشمال القسنطيني). عُرف بحماسه الثوري الكبير، وحنكته التنظيمية في تأسيس المنظمة الخاصة وتعبئة الشعب، واستشهد في ميدان الشرف إثر اشتباك ضارٍ مع قوات العدو بكتامة.</p>
-        </div>
-
-        <!-- البطل 8 -->
-        <div class="hero-card">
-            <img src="images (03).Jpeg" alt="الشهيد العربي بن مهيدي">
-            <h3>8. الشهيد العربي بن مهيدي</h3>
-            <p>رمز الشجاعة والبطولة، عضو مجموعة الستة وقائد الولاية الخامسة ثم عضو لجنة التنسيق والتنفيذ. صاحب المقولة الخالدة: "ألقوا بالثورة إلى الشارع تحتضنها الجماهير". استبسل تحت أبشع أنواع التعذيب واستشهد شامخاً دون أن يبوح بسر، فخلده التاريخ كأيقونة أبدية للثورة.</p>
-        </div>
-
-        <!-- البطل 9 -->
-        <div class="hero-card">
-            <img src="images (02).Jpeg" alt="الشهيد رابح بيطاط">
-            <h3>9. الشهيد رابح بيطاط</h3>
-            <p>من القادة التاريخيين الأوائل ومفجري الثورة التحريرية، وقائد المنطقة الرابعة. اعتقلته السلطات الاستعمارية وسجنته طويلاً، لكنه ظل صامداً ومناضلاً صلباً طوال مسيرته، ومساهماً رئيسياً في مسار الحركة الوطنية والتحريرية.</p>
-        </div>
-
-        <!-- البطل 10 -->
-        <div class="hero-card">
-            <img src="images (01). jpeg" alt="الشهيد محمد بوضياف">
-            <h3>10. الشهيد محمد بوضياف</h3>
-            <p>أحد القادة المؤسسين والبارزين للثورة، ومنسقها العام وصاحب الدور الريادي في التحضير للكفاح المسلح. قضى سنوات طويلة في السجون والمعتقلات الاستعمارية مناضلاً صلباً في سبيل حرية واستقلال الجزائر ووحدتها.</p>
-        </div>
+    <div class="card">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Krim_belkacem.jpg"
+      alt="كريم بلقاسم">
+      <h3>كريم بلقاسم</h3>
+      <p>من قادة الثورة ومفاوضي الاستقلال.</p>
     </div>
 
-    <footer>
-        <p>جميع الحقوق محفوظة &copy; 2026 | وفاءً لدماء الشهداء الأبرار وتخليداً لذكرى الثورة الجزائرية المجيدة.</p>
-    </footer>
+    <div class="card">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Rabah_Bitat_-_1954.jpg"
+      alt="رابح بيطاط">
+      <h3>رابح بيطاط</h3>
+      <p>أحد القادة التاريخيين ومفجري الثورة.</p>
+    </div>
+
+    <div class="card">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Hassiba_Ben_Bouali.jpg"
+      alt="حسيبة بن بوعلي">
+      <h3>حسيبة بن بوعلي</h3>
+      <p>من رموز نضال المرأة الجزائرية.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- الأحداث -->
+<section id="timeline">
+  <h2 class="section-title">محطات من تاريخ الثورة</h2>
+
+  <div class="timeline">
+
+    <div class="event">
+      <h3>1 نوفمبر 1954</h3>
+      <p>اندلاع الثورة التحريرية وإعلان الكفاح المسلح.</p>
+    </div>
+
+    <div class="event">
+      <h3>20 أغسطس 1956</h3>
+      <p>انعقاد مؤتمر الصومام وتنظيم هياكل الثورة.</p>
+    </div>
+
+    <div class="event">
+      <h3>19 سبتمبر 1958</h3>
+      <p>الإعلان عن تأسيس الحكومة المؤقتة للجمهورية الجزائرية.</p>
+    </div>
+
+    <div class="event">
+      <h3>18 مارس 1962</h3>
+      <p>توقيع اتفاقيات إيفيان.</p>
+    </div>
+
+    <div class="event">
+      <h3>5 يوليو 1962</h3>
+      <p>استقلال الجزائر بعد تضحيات جسيمة.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- البيان -->
+<section class="manifesto" id="manifesto">
+  <h2 class="section-title">بيان أول نوفمبر 1954</h2>
+  <p class="quote">
+    «الهدف: الاستقلال الوطني بواسطة إقامة الدولة الجزائرية
+    الديمقراطية الاجتماعية ذات السيادة ضمن إطار المبادئ الإسلامية».
+  </p>
+  <p>كان البيان إعلاناً سياسياً وتاريخياً لانطلاق الثورة وأهدافها.</p>
+</section>
+
+<!-- معرض الصور -->
+<section id="gallery" style="background:#f5faf6">
+  <h2 class="section-title">معرض صور الثورة الجزائرية</h2>
+  <p class="intro">
+    وجوه صنعت التاريخ، وذكريات خالدة من مسيرة التحرير.
+  </p>
+
+  <div class="gallery">
+
+    <div class="photo-card">
+      <img loading="lazy"
+      src="https://commons.wikimedia.org/wiki/Special:FilePath/Six_chefs_FLN_-_1954.jpg"
+      alt="القادة الستة التاريخيون">
+      <h3>القادة الستة التاريخيون</h3>
+      <p>صورة تاريخية للقادة الستة قبل اندلاع الثورة.</p>
+      <a href="https://commons.wikimedia.org/wiki/File:Six_chefs_FLN_-_1954.jpg" target="_blank">مصدر الصورة</a>
+    </div>
+
+    <div class="photo-card">
+      <img loading="lazy"
+      src="https://commons.wikimedia.org/wiki/Special:FilePath/Krim_belkacem.jpg"
+      alt="كريم بلقاسم">
+      <h3>كريم بلقاسم</h3>
+      <p>أحد أبرز قادة الثورة التحريرية.</p>
+      <a href="https://commons.wikimedia.org/wiki/File:Krim_belkacem.jpg" target="_blank">مصدر الصورة</a>
+    </div>
+
+    <div class="photo-card">
+      <img loading="lazy"
+      src="https://commons.wikimedia.org/wiki/Special:FilePath/Rabah_Bitat_-_1954.jpg"
+      alt="رابح بيطاط">
+      <h3>رابح بيطاط</h3>
+      <p>من أعضاء مجموعة الستة التاريخية.</p>
+      <a href="https://commons.wikimedia.org/wiki/Category:Algerian_War" target="_blank">مصدر الصورة</a>
+    </div>
+
+    <div class="photo-card">
+      <img loading="lazy"
+      src="https://commons.wikimedia.org/wiki/Special:FilePath/Hassiba_Ben_Bouali.jpg"
+      alt="حسيبة بن بوعلي">
+      <h3>حسيبة بن بوعلي</h3>
+      <p>رمز من رموز مشاركة المرأة في الثورة.</p>
+      <a href="https://commons.wikimedia.org/wiki/Category:Algerian_War" target="_blank">مصدر الصورة</a>
+    </div>
+
+    <div class="photo-card">
+      <img loading="lazy"
+      src="https://commons.wikimedia.org/wiki/Special:FilePath/Djamila_Boupacha_1963.jpg"
+      alt="جميلة بوباشا">
+      <h3>جميلة بوباشا</h3>
+      <p>من المناضلات الجزائريات خلال حرب التحرير.</p>
+      <a href="https://commons.wikimedia.org/wiki/Category:Algerian_War" target="_blank">مصدر الصورة</a>
+    </div>
+
+    <div class="photo-card">
+      <img loading="lazy"
+      src="https://commons.wikimedia.org/wiki/Special:FilePath/Les_poseuses_de_bombes_2.jpg"
+      alt="مناضلات جزائريات">
+      <h3>نضال المرأة الجزائرية</h3>
+      <p>صورة أرشيفية مرتبطة بالمقاومة النسائية خلال الثورة.</p>
+      <a href="https://commons.wikimedia.org/wiki/Category:Algerian_War" target="_blank">مصدر الصورة</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- الخاتمة -->
+<section style="text-align:center">
+  <h2 class="section-title">رسالة إلى الأجيال</h2>
+
+  <p class="intro">
+    إن أول نوفمبر ليس مجرد تاريخ في صفحات الماضي،
+    بل هو عهد ووفاء لتضحيات الشهداء، ومسؤولية نحملها
+    للحفاظ على الوطن وبناء مستقبله.
+  </p>
+
+  <h2 style="color:#087443;margin-top:25px">
+    تحيا الجزائر 🇩🇿
+  </h2>
+</section>
+
+</main>
+
+<footer>
+  <p>ذاكرة وطن | <span>أول نوفمبر 1954</span></p>
+  <p>المجد والخلود لشهدائنا الأبرار</p>
+</footer>
 
 </body>
 </html>
