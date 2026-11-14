@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>أول نوفمبر 1954 | ذاكرة وطن التفاعلية</title>
 
+<!-- إعدادات التثبيت التلقائي على الهاتف للشاشة الرئيسية -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#043927">
+
 <style>
 :root {
   --primary-green: #087443;
@@ -536,7 +541,6 @@ section {
   gap: 10px;
 }
 
-/* تنسيق لعبة تركيب الصور البازل متجاوب مع كل الشاشات */
 .puzzle-board {
   display: grid;
   grid-template-columns: repeat(3, 90px);
@@ -782,8 +786,11 @@ footer span {color:#e6ccb2; font-weight:bold;}
     <button onclick="document.getElementById('story').scrollIntoView()">
       اكتشف الحكاية
     </button>
+    <button id="installAppBtn" class="download-app-btn" style="display:none;">
+      📲 تثبيت التطبيق على الشاشة
+    </button>
     <a href="#downloadSection" class="download-app-btn">
-      📥 تحميل التطبيق الآن
+      📥 تحميل ملف التطبيق
     </a>
   </div>
 </div>
@@ -937,7 +944,7 @@ footer span {color:#e6ccb2; font-weight:bold;}
   <h2 class="section-title">🎮 ألعاب تفاعلية وطنية</h2>
   <p class="intro">اختبر ذكاءك مع ألعاب الذاكرة، تركيب الصور التاريخية، والتحديات الوطنية!</p>
 
-  <!-- لعبة تركيب صور الشهداء والقادة (Puzzle) -->
+  <!-- لعبة تركيب الصور (Puzzle) -->
   <div class="interactive-box" style="text-align:center;">
     <h3 style="color:var(--dark-forest); margin-bottom:10px;">🧩 لعبة تركيب الصورة التاريخية (البازل)</h3>
     <p style="font-size:14px; color:#475569;">انقر على قطعتين لتبديل أماكنهما وإعادة تركيب الصورة التاريخية للقادة:</p>
@@ -1031,7 +1038,7 @@ footer span {color:#e6ccb2; font-weight:bold;}
   <p style="color:#cbd5e1;">كان البيان إعلاناً سياسياً وتاريخياً لانطلاق الثورة وأهدافها.</p>
 </section>
 
-<!-- قسم التحديات، الألغاز، استطلاع الرأي، والصوتيات -->
+<!-- قسم التحديات والألغاز -->
 <section id="challenges">
   <h2 class="section-title">تحديات، ألغاز وأدوات الذاكرة</h2>
   <p class="intro">اختبر معلوماتك، استمع للأرشيف، وشارك برأيك!</p>
@@ -1044,7 +1051,7 @@ footer span {color:#e6ccb2; font-weight:bold;}
     <div id="audioStatus" style="margin-top:10px; font-size:14px; color:var(--crimson-red); font-weight:bold;"></div>
   </div>
 
-  <!-- 1. لغز الشيفرة السرية -->
+  <!-- لغز الشيفرة السرية -->
   <div class="interactive-box">
     <h3 style="color:var(--dark-forest); margin-bottom:10px;">🔐 لغز الرسالة المشفرة</h3>
     <p>ما هي كلمة السر الشهيرة التي أُطلقت ليلة اندلاع الثورة في الأوراس؟ (اسم صحابيين جليليْن).</p>
@@ -1053,7 +1060,7 @@ footer span {color:#e6ccb2; font-weight:bold;}
     <div id="cipherFeedback" class="feedback"></div>
   </div>
 
-  <!-- 2. لغز من أكون؟ -->
+  <!-- لغز من أكون؟ -->
   <div class="interactive-box">
     <h3 style="color:var(--dark-forest); margin-bottom:10px;">🕵️‍♂️ لغز: من أكون؟</h3>
     <p><em>"قُدت الولاية الأولى (الأوراس)، وزعت السلاح، ولقبني الاستعمار بـ (أبو الثورة). فمن أكون؟"</em></p>
@@ -1066,7 +1073,7 @@ footer span {color:#e6ccb2; font-weight:bold;}
     <div id="riddleFeedback" class="feedback"></div>
   </div>
 
-  <!-- 3. اختبار التحدي (Quiz) -->
+  <!-- اختبار التحدي (Quiz) -->
   <div class="interactive-box">
     <h3 style="color:var(--dark-forest); margin-bottom:10px;">❓ اختبار التحدي التاريخي (<span id="qCounter" style="color:var(--crimson-red);">السؤال 1 من 4</span>)</h3>
     <p id="quizQuestion" style="font-size:18px; font-weight:bold; margin:15px 0; color:var(--slate-navy);"></p>
@@ -1198,10 +1205,30 @@ footer span {color:#e6ccb2; font-weight:bold;}
 <footer>
   <p>ذاكرة وطن | <span>أول نوفمبر 1954</span></p>
   <p style="font-size:14px; margin-top:6px; color:#94a3b8;">المجد والخلود لشهدائنا الأبرار</p>
-  <p style="font-size:13px; margin-top:10px; color:#e6ccb2; font-weight:bold;">إعداد وإشراف: ميري عبد الله</p>
+  <p style="font-size:13px; margin-top:10px; color:#e6ccb2; font-weight:bold;">الإنشاء والكتابة: عبدالله ميري | التدقيق: بدر الدين مساح | تحت إشراف الأستاذة غاوي الفيزياء</p>
 </footer>
 
 <script>
+// تفعيل التثبيت التلقائي للتطبيق على الهاتف (PWA Prompt)
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  const installBtn = document.getElementById('installAppBtn');
+  if (installBtn) {
+    installBtn.style.display = 'inline-flex';
+    installBtn.onclick = () => {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the install prompt');
+        }
+        deferredPrompt = null;
+      });
+    };
+  }
+});
+
 // 1. نافذة القادة
 function openLeaderModal(title, text) {
   document.getElementById('modalTitle').innerText = title;
@@ -1345,11 +1372,11 @@ initPuzzle();
 function downloadAppFile(e) {
   e.preventDefault();
   const status = document.getElementById('downloadStatus');
-  status.innerText = '⏳ جاري تحضير وتنزيل حزمة تطبيق "ذاكرة وطن"...';
+  status.innerText = '⏳ جاري إنشاء ملف التطبيق الشامل بكافة الصور...';
   
   setTimeout(() => {
-    const appContent = `<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><title>تطبيق ذاكرة وطن</title></head><body style="font-family:Tahoma; text-align:center; padding:50px; background:#f8f6f2;"><h1>🇩🇿 تطبيق ذاكرة وطن</h1><p>أنت الآن تشغل النسخة المثبتة لتطبيق الثورة التحريرية.</p><p>المجد والخلود لشهدائنا الأبرار.</p></body></html>`;
-    const blob = new Blob([appContent], { type: 'text/html' });
+    const fullHtml = '<!DOCTYPE html>' + document.documentElement.outerHTML;
+    const blob = new Blob([fullHtml], { type: 'text/html;charset=utf-8' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
@@ -1357,8 +1384,8 @@ function downloadAppFile(e) {
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
-    status.innerText = '✅ تم تنزيل ملف التطبيق بنجاح على جهازك!';
-  }, 1200);
+    status.innerText = '✅ تم تنزيل تطبيق "ذاكرة وطن" بكافة صوره بنجاح!';
+  }, 1000);
 }
 
 // 8. الصوتيات المحاكية
