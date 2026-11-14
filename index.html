@@ -1552,4 +1552,64 @@ function selectAnswer(index, btn) {
     feedback.style.color = '#087443'; feedback.innerText = '✅ إجابة صحيحة!';
     score++;
   } else {
-    btn.sty
+    btn.style.background = '#b81d24'; btn.style.color = 'white';
+    buttons[qObj.correct].style.background = '#087443'; buttons[qObj.correct].style.color = 'white';
+    feedback.style.color = '#b81d24'; feedback.innerText = '❌ إجابة خاطئة!';
+  }
+  document.getElementById('nextQuizBtn').style.display = 'inline-block';
+}
+function nextQuestion() {
+  currentQ++;
+  if (currentQ < quizData.length) {
+    loadQuestion();
+  } else {
+    document.getElementById('quizQuestion').innerText = `🏆 انتهى التحدي! نتيجتك: ${score} من ${quizData.length}`;
+    document.getElementById('quizOptionsContainer').innerHTML = '';
+    document.getElementById('quizFeedback').innerText = 'أداء رائع ووطني ممتاز 🇩🇿';
+    const nextBtn = document.getElementById('nextQuizBtn');
+    nextBtn.innerText = 'إعادة الاختبار 🔄';
+    nextBtn.onclick = () => { currentQ = 0; score = 0; nextBtn.innerText = 'السؤال التالي ⬅'; nextBtn.onclick = nextQuestion; loadQuestion(); };
+  }
+}
+loadQuestion();
+
+// 13. استطلاع الرأي
+let votes = [45, 30, 25];
+function votePoll(optionNum) {
+  let total = votes[0] + votes[1] + votes[2] + 1;
+  votes[optionNum - 1]++;
+  for(let i=1; i<=3; i++) {
+    let percentage = Math.round((votes[i-1] / total) * 100);
+    document.getElementById('bar' + i).style.width = percentage + '%';
+    document.getElementById('p' + i).innerText = percentage + '%';
+  }
+}
+
+// 14. شهادة التقدير
+function generateCert() {
+  const name = document.getElementById('certName').value.trim();
+  const card = document.getElementById('certCard');
+  if(name !== '') {
+    document.getElementById('certHolderName').innerText = name;
+    card.style.display = 'block';
+  } else {
+    alert('يرجى كتابة الاسم أولاً.');
+  }
+}
+
+// 15. سجل الوفاء
+function addPledge() {
+  const input = document.getElementById('visitorName');
+  const text = input.value.trim();
+  if (text !== '') {
+    const tag = document.createElement('span');
+    tag.className = 'pledge-tag';
+    tag.innerText = `🇩🇿 ${text}`;
+    document.getElementById('pledgeWall').appendChild(tag);
+    input.value = '';
+  }
+}
+</script>
+
+</body>
+</html>
