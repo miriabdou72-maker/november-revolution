@@ -1,12 +1,22 @@
-tml
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>أول نوفمبر 1954 | ذاكرة وطن</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>أول نوفمبر 1954 | ذاكرة وطن التفاعلية</title>
 
 <style>
+:root {
+  --primary-green: #087443;
+  --dark-forest: #043927;
+  --crimson-red: #b81d24;
+  --warm-bronze: #a47148;
+  --slate-navy: #1e293b;
+  --sand-cream: #f8f6f2;
+  --pure-white: #ffffff;
+  --border-sand: #e2ddd5;
+}
+
 * {
   margin:0;
   padding:0;
@@ -14,40 +24,60 @@ tml
   scroll-behavior:smooth;
 }
 
-body {
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
   font-family:Tahoma,Arial,sans-serif;
-  background:white;
-  color:#183b2a;
+  background:var(--pure-white);
+  color:var(--slate-navy);
   line-height:1.9;
 }
 
 header {
-  background:#087443;
-  color:white;
-  padding:16px 6%;
+  width: 100%;
+  background:linear-gradient(90deg, var(--dark-forest), var(--primary-green));
+  color:var(--pure-white);
+  padding:16px 5%;
   display:flex;
   justify-content:space-between;
   align-items:center;
   flex-wrap:wrap;
   position:sticky;
   top:0;
-  z-index:10;
+  z-index:100;
+  border-bottom:3px solid var(--crimson-red);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 
-.logo {font-size:23px;font-weight:bold;}
+.logo {font-size:23px;font-weight:bold; letter-spacing:0.5px;}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  justify-content: center;
+}
 
 nav a {
-  color:white;
+  color:var(--pure-white);
   text-decoration:none;
-  margin:0 8px;
-  font-size:14px;
+  margin:0 2px;
+  font-size:13px;
+  padding:5px 8px;
+  border-radius:6px;
+  transition: 0.25s;
 }
 
-nav a:hover {color:#ffe18b;}
+nav a:hover {
+  background:rgba(255,255,255,0.15);
+  color:#e2ddd5;
+}
 
 .hero {
+  width: 100%;
   min-height:570px;
-  padding:90px 8%;
+  padding:90px 6%;
   display:flex;
   flex-direction:column;
   justify-content:center;
@@ -62,39 +92,87 @@ nav a:hover {color:#ffe18b;}
 }
 
 .hero .date {
-  color:#ffe18b;
-  font-size:24px;
+  color:#e6ccb2;
+  font-size:22px;
+  font-weight:bold;
+  background:rgba(184, 29, 36, 0.85);
+  padding:4px 18px;
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,0.3);
 }
 
 .hero h1 {
-  font-size:clamp(40px,7vw,75px);
+  font-size:clamp(36px,7vw,75px);
   margin:15px 0;
+  text-shadow:0 4px 15px rgba(0,0,0,0.4);
 }
 
 .hero p {
   max-width:700px;
   font-size:19px;
+  color:#f1f5f9;
 }
 
-.hero button {
-  margin-top:30px;
-  padding:13px 32px;
-  border:2px solid white;
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.hero button, .download-app-btn {
+  padding:13px 28px;
+  border:2px solid var(--pure-white);
   border-radius:30px;
-  color:#087443;
-  background:white;
-  font-size:17px;
+  color:var(--dark-forest);
+  background:var(--pure-white);
+  font-size:16px;
   cursor:pointer;
   font-weight:bold;
+  transition: 0.3s;
+  box-shadow:0 6px 20px rgba(0,0,0,0.25);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
-section {padding:65px 8%;}
+.download-app-btn {
+  background: var(--crimson-red);
+  color: var(--pure-white);
+  border-color: var(--crimson-red);
+}
+
+.hero button:hover, .download-app-btn:hover {
+  background:var(--slate-navy);
+  border-color:var(--slate-navy);
+  color:var(--pure-white);
+  transform:translateY(-2px);
+}
+
+section {
+  width: 100%;
+  padding:65px 6%;
+}
 
 .section-title {
   text-align:center;
-  color:#087443;
-  font-size:32px;
+  color:var(--dark-forest);
+  font-size:clamp(24px, 5vw, 32px);
   margin-bottom:30px;
+  position:relative;
+}
+
+.section-title::after {
+  content:"";
+  display:block;
+  width:70px;
+  height:4px;
+  background:linear-gradient(90deg, var(--primary-green), var(--crimson-red));
+  margin:10px auto 0;
+  border-radius:2px;
 }
 
 .intro {
@@ -102,14 +180,21 @@ section {padding:65px 8%;}
   max-width:850px;
   margin:auto;
   font-size:18px;
+  color:#334155;
 }
 
 .highlight {
-  background:#eaf6ed;
-  border-right:5px solid #087443;
+  background:var(--sand-cream);
+  border-right:5px solid var(--warm-bronze);
   padding:25px;
   border-radius:10px;
   margin-top:30px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.04);
+}
+
+.highlight h3 {
+  color:var(--crimson-red);
+  margin-bottom:8px;
 }
 
 .cards {
@@ -122,20 +207,30 @@ section {padding:65px 8%;}
 .card {
   padding:18px;
   border-radius:14px;
-  background:#f0f8f2;
-  border-bottom:4px solid #07804a;
+  background:var(--pure-white);
+  border:1px solid var(--border-sand);
+  border-bottom:4px solid var(--primary-green);
   transition:.3s;
   text-align:center;
+  cursor:pointer;
+  position:relative;
+  box-shadow:0 4px 15px rgba(0,0,0,0.04);
 }
 
 .card:hover {
   transform:translateY(-6px);
-  box-shadow:0 8px 25px #0002;
+  border-bottom-color:var(--crimson-red);
+  box-shadow:0 12px 28px rgba(0,0,0,0.1);
 }
 
 .card h3 {
-  color:#087443;
-  margin:10px 0;
+  color:var(--dark-forest);
+  margin:12px 0 6px;
+}
+
+.card p {
+  color:#475569;
+  font-size:14px;
 }
 
 .card img {
@@ -145,60 +240,381 @@ section {padding:65px 8%;}
   border-radius:10px;
 }
 
+.card .more-badge {
+  display:inline-block;
+  margin-top:12px;
+  font-size:12px;
+  color:var(--pure-white);
+  background:var(--warm-bronze);
+  padding:4px 14px;
+  border-radius:20px;
+  font-weight:bold;
+  transition:0.2s;
+}
+
+.card:hover .more-badge {
+  background:var(--crimson-red);
+}
+
 .timeline {
   max-width:800px;
   margin:auto;
-  border-right:3px solid #087443;
-  padding-right:25px;
+  border-right:3px solid var(--warm-bronze);
+  padding-right:20px;
 }
 
-.event {margin:25px 0;position:relative;}
+.event {
+  margin:25px 0;
+  position:relative;
+  background:var(--pure-white);
+  padding:16px 20px;
+  border-radius:10px;
+  border:1px solid var(--border-sand);
+  cursor:pointer;
+  transition:0.3s;
+  box-shadow:0 3px 10px rgba(0,0,0,0.03);
+}
+
+.event:hover {
+  background:var(--sand-cream);
+  border-color:var(--warm-bronze);
+}
 
 .event::before {
   content:"";
-  width:13px;
-  height:13px;
-  background:#d62b35;
+  width:14px;
+  height:14px;
+  background:var(--crimson-red);
+  border:3px solid var(--pure-white);
+  box-shadow:0 0 0 2px var(--crimson-red);
   border-radius:50%;
   position:absolute;
-  right:-33px;
-  top:12px;
+  right:-29px;
+  top:22px;
 }
 
-.event h3 {color:#087443;}
+.event h3 {
+  color:var(--primary-green);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.event-details {
+  display:none;
+  margin-top:12px;
+  padding-top:12px;
+  border-top:1px dashed var(--warm-bronze);
+  font-size:15px;
+  color:var(--slate-navy);
+}
 
 .manifesto {
-  background:#087443;
-  color:white;
+  background:linear-gradient(135deg, var(--dark-forest), var(--slate-navy));
+  color:var(--pure-white);
   text-align:center;
+  border-top:4px solid var(--crimson-red);
+  border-bottom:4px solid var(--warm-bronze);
 }
 
-.manifesto h2 {color:#ffe18b;}
+.manifesto h2 {color:#e6ccb2;}
+.manifesto h2::after {background:var(--crimson-red);}
 
 .quote {
   max-width:800px;
   margin:20px auto;
   font-size:21px;
   font-style:italic;
+  color:#f8fafc;
 }
 
-/* معرض الصور */
+.interactive-box {
+  width: 100%;
+  max-width:800px;
+  margin:25px auto;
+  background:var(--pure-white);
+  border:1px solid var(--border-sand);
+  border-top:4px solid var(--warm-bronze);
+  border-radius:15px;
+  padding:24px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.05);
+}
+
+.quiz-options {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:15px;
+}
+
+.quiz-btn {
+  padding:13px;
+  background:var(--sand-cream);
+  border:1px solid var(--border-sand);
+  color:var(--slate-navy);
+  border-radius:10px;
+  cursor:pointer;
+  font-size:15px;
+  font-weight:bold;
+  transition:0.25s;
+}
+
+.quiz-btn:hover {
+  background:var(--slate-navy);
+  color:var(--pure-white);
+  border-color:var(--slate-navy);
+}
+
+.cipher-input {
+  width:100%;
+  padding:12px;
+  margin:15px 0;
+  border:2px solid var(--border-sand);
+  background:var(--sand-cream);
+  border-radius:8px;
+  font-size:16px;
+  text-align:center;
+  color:var(--slate-navy);
+  transition:0.2s;
+}
+
+.cipher-input:focus {
+  outline:none;
+  border-color:var(--primary-green);
+  background:var(--pure-white);
+}
+
+.action-btn {
+  background:var(--primary-green);
+  color:var(--pure-white);
+  border:none;
+  padding:11px 26px;
+  border-radius:8px;
+  font-size:16px;
+  cursor:pointer;
+  font-weight:bold;
+  transition:0.25s;
+  max-width: 100%;
+}
+
+.action-btn:hover {
+  background:var(--crimson-red);
+}
+
+.feedback {
+  margin-top:15px;
+  font-weight:bold;
+  font-size:16px;
+  min-height:25px;
+}
+
+.wilayat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.wilaya-card {
+  background: var(--pure-white);
+  border: 1px solid var(--border-sand);
+  border-right: 4px solid var(--primary-green);
+  padding: 16px;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow:0 3px 10px rgba(0,0,0,0.03);
+}
+
+.wilaya-card h3 {
+  color:var(--dark-forest);
+  margin-bottom:4px;
+}
+
+.wilaya-card p {
+  color:#64748b;
+  font-size:14px;
+}
+
+.wilaya-card:hover {
+  background: var(--slate-navy);
+  border-right-color: var(--crimson-red);
+  transform:translateY(-3px);
+}
+
+.wilaya-card:hover h3, .wilaya-card:hover p {
+  color: var(--pure-white);
+}
+
+.safe-digits {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 18px 0;
+  flex-wrap: wrap;
+}
+
+.safe-digit-input {
+  width: 55px;
+  height: 55px;
+  font-size: 22px;
+  font-weight:bold;
+  text-align: center;
+  border: 2px solid var(--warm-bronze);
+  background: var(--sand-cream);
+  color: var(--dark-forest);
+  border-radius: 10px;
+}
+
+.safe-digit-input:focus {
+  outline:none;
+  border-color:var(--crimson-red);
+  background:var(--pure-white);
+}
+
+.countdown-box {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.time-box {
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-bottom: 3px solid var(--crimson-red);
+  padding: 8px 12px;
+  border-radius: 10px;
+  text-align: center;
+  min-width: 65px;
+  color: #e2e8f0;
+  font-size:12px;
+}
+
+.time-box span {
+  display: block;
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--pure-white);
+}
+
+.poll-option {
+  background: var(--sand-cream);
+  border: 1px solid var(--border-sand);
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin: 10px 0;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition:0.2s;
+}
+
+.poll-option:hover {
+  border-color:var(--warm-bronze);
+}
+
+.poll-bar {
+  position: absolute;
+  top: 0; right: 0; bottom: 0;
+  background: rgba(8, 116, 67, 0.18);
+  border-left: 3px solid var(--primary-green);
+  z-index: 1;
+  transition: width 0.5s ease;
+}
+
+.poll-text {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  font-weight:bold;
+  color:var(--slate-navy);
+  gap: 10px;
+}
+
+/* تنسيق لعبة تركيب الصور البازل متجاوب مع كل الشاشات */
+.puzzle-board {
+  display: grid;
+  grid-template-columns: repeat(3, 90px);
+  grid-template-rows: repeat(3, 90px);
+  gap: 4px;
+  justify-content: center;
+  background: var(--dark-forest);
+  padding: 8px;
+  border-radius: 10px;
+  margin: 15px auto;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.puzzle-tile {
+  width: 90px;
+  height: 90px;
+  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/Six_chefs_FLN_-_1954.jpg");
+  background-size: 270px 270px;
+  cursor: pointer;
+  border: 1px solid var(--pure-white);
+  border-radius: 4px;
+  transition: 0.15s;
+}
+
+.puzzle-tile:hover {
+  opacity: 0.85;
+}
+
+.game-match-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.match-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--sand-cream);
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid var(--border-sand);
+  gap: 10px;
+}
+
+.match-row select {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid var(--warm-bronze);
+  background: var(--pure-white);
+  font-family: Tahoma, Arial;
+  font-size: 14px;
+  max-width: 100%;
+}
+
 .gallery {
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
   gap:24px;
+  margin-top:30px;
 }
 
 .photo-card {
-  background:white;
+  background:var(--pure-white);
   border-radius:14px;
   overflow:hidden;
-  box-shadow:0 5px 20px #0002;
-  border-bottom:4px solid #087443;
+  box-shadow:0 5px 20px rgba(0,0,0,0.06);
+  border:1px solid var(--border-sand);
+  border-bottom:4px solid var(--warm-bronze);
   transition:.3s;
 }
 
-.photo-card:hover {transform:translateY(-6px);}
+.photo-card:hover {
+  transform:translateY(-6px);
+  border-bottom-color:var(--crimson-red);
+}
 
 .photo-card img {
   width:100%;
@@ -208,37 +624,118 @@ section {padding:65px 8%;}
 }
 
 .photo-card h3 {
-  color:#087443;
-  padding:12px 15px 2px;
+  color:var(--dark-forest);
+  padding:14px 15px 4px;
 }
 
 .photo-card p {
-  padding:0 15px 15px;
-  color:#555;
+  padding:0 15px 12px;
+  color:#475569;
   font-size:14px;
 }
 
 .photo-card a {
   display:inline-block;
-  color:#087443;
-  padding:0 15px 15px;
+  color:var(--crimson-red);
+  font-weight:bold;
+  text-decoration:none;
+  padding:0 15px 16px;
   font-size:13px;
 }
 
-footer {
-  text-align:center;
-  background:#064a2d;
-  color:white;
-  padding:30px;
+.photo-card a:hover {
+  text-decoration:underline;
 }
 
-footer span {color:#f5d46a;}
+.pledge-wall {
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:center;
+  margin-top:20px;
+}
+
+.pledge-tag {
+  background:var(--sand-cream);
+  border:1px solid var(--warm-bronze);
+  color:var(--dark-forest);
+  padding:8px 16px;
+  border-radius:20px;
+  font-size:14px;
+  font-weight:bold;
+}
+
+.visitor-input {
+  padding:10px;
+  border:2px solid var(--border-sand);
+  background:var(--sand-cream);
+  border-radius:8px;
+  width:100%;
+  max-width:260px;
+}
+
+.modal {
+  display:none;
+  position:fixed;
+  z-index:1000;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  background:rgba(15, 23, 42, 0.75);
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+.modal-content {
+  background:var(--pure-white);
+  padding:32px;
+  border-radius:15px;
+  max-width:500px;
+  width:100%;
+  text-align:center;
+  border-top:6px solid var(--crimson-red);
+  border-bottom:4px solid var(--primary-green);
+  position:relative;
+  box-shadow:0 15px 40px rgba(0,0,0,0.3);
+}
+
+.close-modal {
+  position:absolute;
+  top:12px;
+  left:16px;
+  font-size:26px;
+  cursor:pointer;
+  color:var(--crimson-red);
+  font-weight:bold;
+}
+
+footer {
+  width: 100%;
+  text-align:center;
+  background:var(--slate-navy);
+  color:#e2e8f0;
+  padding:32px 15px;
+  border-top:4px solid var(--primary-green);
+}
+
+footer span {color:#e6ccb2; font-weight:bold;}
 
 @media(max-width:650px) {
   header {justify-content:center;gap:10px;}
-  nav {text-align:center;}
-  nav a {display:inline-block;margin:4px;}
-  section {padding:45px 6%;}
+  section {padding:45px 5%;}
+  .quiz-options {grid-template-columns:1fr;}
+  .match-row {flex-direction:column; align-items:stretch;}
+  .puzzle-board {
+    grid-template-columns: repeat(3, 80px);
+    grid-template-rows: repeat(3, 80px);
+  }
+  .puzzle-tile {
+    width: 80px;
+    height: 80px;
+    background-size: 240px 240px;
+  }
 }
 </style>
 </head>
@@ -251,7 +748,11 @@ footer span {color:#f5d46a;}
     <a href="#home">الرئيسية</a>
     <a href="#story">القصة</a>
     <a href="#leaders">القادة</a>
+    <a href="#mapSection">الولايات</a>
     <a href="#timeline">الأحداث</a>
+    <a href="#safeSection">الخزنة</a>
+    <a href="#gamesSection">ألعاب الوطن</a>
+    <a href="#challenges">التحديات</a>
     <a href="#gallery">الصور</a>
   </nav>
 </header>
@@ -266,9 +767,25 @@ footer span {color:#f5d46a;}
     ليلة صنعت تاريخ أمة، وأشعلت شعلة الثورة
     الجزائرية من أجل الحرية والاستقلال.
   </p>
-  <button onclick="document.getElementById('story').scrollIntoView()">
-    اكتشف الحكاية
-  </button>
+  
+  <div style="margin-top:15px;">
+    <p style="font-size:14px; color:#e2e8f0; margin-bottom:6px;">الوقت المتبقي لذكرى الاستقلال القادمة (5 جويلية):</p>
+    <div class="countdown-box" id="countdownBox">
+      <div class="time-box"><span id="days">00</span>يوم</div>
+      <div class="time-box"><span id="hours">00</span>ساعة</div>
+      <div class="time-box"><span id="mins">00</span>دقيقة</div>
+      <div class="time-box"><span id="secs">00</span>ثانية</div>
+    </div>
+  </div>
+
+  <div class="hero-buttons">
+    <button onclick="document.getElementById('story').scrollIntoView()">
+      اكتشف الحكاية
+    </button>
+    <a href="#downloadSection" class="download-app-btn">
+      📥 تحميل التطبيق الآن
+    </a>
+  </div>
 </div>
 
 <!-- القصة -->
@@ -291,76 +808,216 @@ footer span {color:#f5d46a;}
 </section>
 
 <!-- القادة -->
-<section id="leaders" style="background:#f5faf6">
+<section id="leaders" style="background:var(--sand-cream)">
   <h2 class="section-title">مجموعة الستة التاريخية</h2>
   <p class="intro">
-    ستة مناضلين قادوا التحضير لإطلاق الثورة التحريرية.
+    ستة مناضلين قادوا التحضير لإطلاق الثورة التحريرية. <strong>(اضغط على أي بطاقة لاكتشاف السيرة)</strong>
   </p>
 
   <div class="cards">
-
-    <div class="card">
-      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Six_chefs_FLN_-_1954.jpg"
-      alt="صورة القادة الستة">
+    <div class="card" onclick="openLeaderModal('القادة الستة', 'اجتمع القادة الستة بالرايس حميدو لوضع اللمسات الأخيرة لتفجير الثورة وتقسيم البلاد إلى مناطق عسكرية.')">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Six_chefs_FLN_-_1954.jpg" alt="القادة الستة">
       <h3>القادة الستة</h3>
       <p>الصورة التاريخية التي تجمع مفجري الثورة سنة 1954.</p>
+      <span class="more-badge">اقرأ السيرة +</span>
     </div>
-
-    <div class="card">
-      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Krim_belkacem.jpg"
-      alt="كريم بلقاسم">
+    <div class="card" onclick="openLeaderModal('كريم بلقاسم (1922 - 1970)', 'أسد الجبل، قاد المنطقة الثالثة (القبائل)، ومهندس مؤتمر الصومام ورئيس وفد مفاوضات إيفيان.')">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Krim_belkacem.jpg" alt="كريم بلقاسم">
       <h3>كريم بلقاسم</h3>
       <p>من قادة الثورة ومفاوضي الاستقلال.</p>
+      <span class="more-badge">اقرأ السيرة +</span>
     </div>
-
-    <div class="card">
-      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Rabah_Bitat_-_1954.jpg"
-      alt="رابح بيطاط">
+    <div class="card" onclick="openLeaderModal('رابح بيطاط (1925 - 2000)', 'أحد أعضاء مجموعة الـ 22 ومجموعة الستة، قاد المنطقة الرابعة واعتقل سنة 1955.')">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Rabah_Bitat_-_1954.jpg" alt="رابح بيطاط">
       <h3>رابح بيطاط</h3>
       <p>أحد القادة التاريخيين ومفجري الثورة.</p>
+      <span class="more-badge">اقرأ السيرة +</span>
     </div>
-
-    <div class="card">
-      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Hassiba_Ben_Bouali.jpg"
-      alt="حسيبة بن بوعلي">
+    <div class="card" onclick="openLeaderModal('حسيبة بن بوعلي (1938 - 1957)', 'أيقونة معركة الجزائر، فدائية بطلة استشهدت في حي القصبة رفقة علي لابوانت.')">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Hassiba_Ben_Bouali.jpg" alt="حسيبة بن بوعلي">
       <h3>حسيبة بن بوعلي</h3>
       <p>من رموز نضال المرأة الجزائرية.</p>
+      <span class="more-badge">اقرأ السيرة +</span>
     </div>
+  </div>
+</section>
 
+<!-- الخريطة التفاعلية للولايات التاريخية الست -->
+<section id="mapSection">
+  <h2 class="section-title">🗺️ الولايات التاريخية (مؤتمر الصومام 1956)</h2>
+  <p class="intro">انقر على أي ولاية تاريخية لمعرفة قائدها وأبرز معالمها:</p>
+  
+  <div class="wilayat-grid">
+    <div class="wilaya-card" onclick="showWilayaInfo(1, 'الولاية الأولى: الأوراس', 'القائد الأول: مصطفى بن بولعيد. تميزت بوعورة جبالها وكونها مهد انطلاق الرصاصة الأولى.')">
+      <h3>الولاية الأولى</h3>
+      <p>الأوراس النمامشة</p>
+    </div>
+    <div class="wilaya-card" onclick="showWilayaInfo(2, 'الولاية الثانية: الشمال القسنطيني', 'القائد الأول: ديدوش مراد ثم زيغود يوسف. شهدت هجومات 20 أوت 1955 الشهيرة.')">
+      <h3>الولاية الثانية</h3>
+      <p>الشمال القسنطيني</p>
+    </div>
+    <div class="wilaya-card" onclick="showWilayaInfo(3, 'الولاية الثالثة: منطقة القبائل', 'القائد الأول: كريم بلقاسم. تميزت بتنظيم محكم وبسالة منقطع النظير.')">
+      <h3>الولاية الثالثة</h3>
+      <p>منطقة القبائل</p>
+    </div>
+    <div class="wilaya-card" onclick="showWilayaInfo(4, 'الولاية الرابعة: الوسط (الجزائر وضواحيها)', 'القائد الأول: رابح بيطاط. مثلت قلب المعركة السياسية والعسكرية النابض.')">
+      <h3>الولاية الرابعة</h3>
+      <p>الوسط (الجزائر)</p>
+    </div>
+    <div class="wilaya-card" onclick="showWilayaInfo(5, 'الولاية الخامسة: الغرب الوهراني', 'القائد الأول: العربي بن مهيدي. تميزت بتأمين الحدود الغربية وإمداد الثورة.')">
+      <h3>الولاية الخامسة</h3>
+      <p>الغرب الوهراني</p>
+    </div>
+    <div class="wilaya-card" onclick="showWilayaInfo(6, 'الولاية السادسة: الصحراء', 'أُقرت لاحقاً في مؤتمر الصومام، وقادها العقيد سي الحواس. ربطت الثورة بعمقها الإفريقي.')">
+      <h3>الولاية السادسة</h3>
+      <p>الصحراء الكبرى</p>
+    </div>
+  </div>
+  <div id="wilayaDisplay" class="highlight" style="display:none; margin-top:20px; text-align:center;">
+    <h3 id="wilayaTitle"></h3>
+    <p id="wilayaDesc" style="margin-top:5px;"></p>
   </div>
 </section>
 
 <!-- الأحداث -->
-<section id="timeline">
+<section id="timeline" style="background:var(--sand-cream);">
   <h2 class="section-title">محطات من تاريخ الثورة</h2>
-
   <div class="timeline">
-
-    <div class="event">
-      <h3>1 نوفمبر 1954</h3>
+    <div class="event" onclick="toggleEvent(this)">
+      <h3><span>1 نوفمبر 1954</span> <span>▼</span></h3>
       <p>اندلاع الثورة التحريرية وإعلان الكفاح المسلح.</p>
+      <div class="event-details">تنفيذ أكثر من 30 عملية فدائية متزامنة وإذاعة بيان أول نوفمبر.</div>
     </div>
-
-    <div class="event">
-      <h3>20 أغسطس 1956</h3>
+    <div class="event" onclick="toggleEvent(this)">
+      <h3><span>20 أغسطس 1956</span> <span>▼</span></h3>
       <p>انعقاد مؤتمر الصومام وتنظيم هياكل الثورة.</p>
+      <div class="event-details">إقرار أولوية الداخل على الخارج وتقسيم البلاد إلى 6 ولايات تاريخية.</div>
     </div>
-
-    <div class="event">
-      <h3>19 سبتمبر 1958</h3>
+    <div class="event" onclick="toggleEvent(this)">
+      <h3><span>19 سبتمبر 1958</span> <span>▼</span></h3>
       <p>الإعلان عن تأسيس الحكومة المؤقتة للجمهورية الجزائرية.</p>
+      <div class="event-details">تأسست بالقاهرة برئاسة فرحات عباس كممثل شرعي للجزائر.</div>
     </div>
-
-    <div class="event">
-      <h3>18 مارس 1962</h3>
+    <div class="event" onclick="toggleEvent(this)">
+      <h3><span>18 مارس 1962</span> <span>▼</span></h3>
       <p>توقيع اتفاقيات إيفيان.</p>
+      <div class="event-details">أسفرت عن إعلان وقف إطلاق النار وتنظيم استفتاء تقرير المصير.</div>
     </div>
-
-    <div class="event">
-      <h3>5 يوليو 1962</h3>
+    <div class="event" onclick="toggleEvent(this)">
+      <h3><span>5 يوليو 1962</span> <span>▼</span></h3>
       <p>استقلال الجزائر بعد تضحيات جسيمة.</p>
+      <div class="event-details">استعادة السيادة الوطنية بعد 132 سنة من الاستعمار.</div>
     </div>
+  </div>
+</section>
 
+<!-- خزنة الأرشيف السري -->
+<section id="safeSection">
+  <h2 class="section-title">🔒 خزنة الأرشيف السري</h2>
+  <p class="intro">أدخل سنة اندلاع الثورة التحريرية (4 أرقام) لفتح الخزنة واستخراج الوثيقة السرية:</p>
+  
+  <div class="interactive-box" style="text-align:center;">
+    <div class="safe-digits">
+      <input type="text" maxlength="1" class="safe-digit-input" id="d1" placeholder="">
+      <input type="text" maxlength="1" class="safe-digit-input" id="d2" placeholder="">
+      <input type="text" maxlength="1" class="safe-digit-input" id="d3" placeholder="">
+      <input type="text" maxlength="1" class="safe-digit-input" id="d4" placeholder="">
+    </div>
+    <button class="action-btn" onclick="openSafe()">افتح الخزنة 🔑</button>
+    <div id="safeFeedback" class="feedback"></div>
+    <div id="safeContent" style="display:none; margin-top:20px; background:var(--sand-cream); padding:18px; border-radius:8px; border:1px dashed var(--warm-bronze);">
+      <h3 style="color:var(--crimson-red); margin-bottom:6px;">📜 وثيقة سرية تاريخية:</h3>
+      <p>«إلى الشعب الجزائري، إننا نخوض معركة من أجل الاستقلال الوطني، لا رجعة فيها، وندعو الجميع للالتفاف حول لواء جبهة التحرير الوطني.»</p>
+    </div>
+  </div>
+</section>
+
+<!-- قسم ألعاب تفاعلية عن الوطن وتركيب الصور -->
+<section id="gamesSection" style="background:var(--sand-cream);">
+  <h2 class="section-title">🎮 ألعاب تفاعلية وطنية</h2>
+  <p class="intro">اختبر ذكاءك مع ألعاب الذاكرة، تركيب الصور التاريخية، والتحديات الوطنية!</p>
+
+  <!-- لعبة تركيب صور الشهداء والقادة (Puzzle) -->
+  <div class="interactive-box" style="text-align:center;">
+    <h3 style="color:var(--dark-forest); margin-bottom:10px;">🧩 لعبة تركيب الصورة التاريخية (البازل)</h3>
+    <p style="font-size:14px; color:#475569;">انقر على قطعتين لتبديل أماكنهما وإعادة تركيب الصورة التاريخية للقادة:</p>
+    
+    <div class="puzzle-board" id="puzzleBoard"></div>
+    
+    <button class="action-btn" onclick="shufflePuzzle()">خلط القطع وبدء اللعبة 🔄</button>
+    <div id="puzzleFeedback" class="feedback"></div>
+  </div>
+
+  <!-- لعبة المطابقة والتوصيل الوطنية -->
+  <div class="interactive-box">
+    <h3 style="color:var(--dark-forest); margin-bottom:10px;">🧩 لعبة التوصيل: اربط كل قائد بالولاية أو الرمز الصحيح</h3>
+    <p style="font-size:14px; color:#475569;">اختر الإجابة الصحيحة المقابلة لكل بطل:</p>
+    
+    <div class="game-match-container">
+      <div class="match-row">
+        <span><strong>مصطفى بن بولعيد:</strong></span>
+        <select id="match1">
+          <option value="">-- اختر الإجابة المناسبة --</option>
+          <option value="correct">الولاية الأولى (الأوراس)</option>
+          <option value="wrong">الولاية الثالثة</option>
+          <option value="wrong">الحكومة المؤقتة</option>
+        </select>
+      </div>
+
+      <div class="match-row">
+        <span><strong>كريم بلقاسم:</strong></span>
+        <select id="match2">
+          <option value="">-- اختر الإجابة المناسبة --</option>
+          <option value="wrong">الولاية الأولى</option>
+          <option value="correct">مفاوضات إيفيان والولاية الثالثة</option>
+          <option value="wrong">معركة الجزائر</option>
+        </select>
+      </div>
+
+      <div class="match-row">
+        <span><strong>حسيبة بن بوعلي:</strong></span>
+        <select id="match3">
+          <option value="">-- اختر الإجابة المناسبة --</option>
+          <option value="wrong">مؤتمر الصومام</option>
+          <option value="wrong">الصحراء الكبرى</option>
+          <option value="correct">رمز نضال المرأة ومعركة الجزائر</option>
+        </select>
+      </div>
+    </div>
+    
+    <button class="action-btn" style="margin-top:20px;" onclick="checkMatchingGame()">تحقق من الإجابات 🎯</button>
+    <div id="matchingFeedback" class="feedback"></div>
+  </div>
+
+  <!-- لعبة ترتيب التسلسل التاريخي السريع -->
+  <div class="interactive-box">
+    <h3 style="color:var(--dark-forest); margin-bottom:10px;">⚡ تحدي التواريخ: ما هو الحدث الذي وقع سنة 1955؟</h3>
+    <div class="quiz-options">
+      <button class="quiz-btn" onclick="checkOrderGame(this, false)">توقيع اتفاقيات إيفيان</button>
+      <button class="quiz-btn" onclick="checkOrderGame(this, true)">هجومات الشمال القسنطيني (20 أوت)</button>
+      <button class="quiz-btn" onclick="checkOrderGame(this, false)">تأسيس الحكومة المؤقتة</button>
+      <button class="quiz-btn" onclick="checkOrderGame(this, false)">استقلال الجزائر</button>
+    </div>
+    <div id="orderFeedback" class="feedback"></div>
+  </div>
+</section>
+
+<!-- قسم تحميل التطبيق -->
+<section id="downloadSection" style="text-align:center;">
+  <h2 class="section-title">📱 تطبيق "ذاكرة وطن" للهواتف الذكية</h2>
+  <p class="intro">
+    خذ معك تاريخ الثورة التحريرية أينما ذهبت! استمتع بكافة الألعاب، الأرشيف السري، والقصص الخالدة بدون انترنت.
+  </p>
+  
+  <div class="interactive-box" style="max-width:600px; margin:30px auto; background:var(--sand-cream); border-top-color:var(--primary-green);">
+    <h3 style="color:var(--dark-forest); margin-bottom:12px;">تحميل النسخة الرسمية (APK / PWA)</h3>
+    <p style="font-size:15px; color:#475569; margin-bottom:20px;">انقر على الزر أدناه لبدء تحميل التطبيق التفاعلي لجهازك فوراً:</p>
+    
+    <a href="#download" onclick="downloadAppFile(event)" class="download-app-btn" style="font-size:17px; padding:14px 32px; border-radius:35px;">
+      ⬇️ تحميل تطبيق ذاكرة وطن الآن
+    </a>
+    
+    <div id="downloadStatus" style="margin-top:15px; font-weight:bold; color:var(--primary-green);"></div>
   </div>
 </section>
 
@@ -371,77 +1028,135 @@ footer span {color:#f5d46a;}
     «الهدف: الاستقلال الوطني بواسطة إقامة الدولة الجزائرية
     الديمقراطية الاجتماعية ذات السيادة ضمن إطار المبادئ الإسلامية».
   </p>
-  <p>كان البيان إعلاناً سياسياً وتاريخياً لانطلاق الثورة وأهدافها.</p>
+  <p style="color:#cbd5e1;">كان البيان إعلاناً سياسياً وتاريخياً لانطلاق الثورة وأهدافها.</p>
+</section>
+
+<!-- قسم التحديات، الألغاز، استطلاع الرأي، والصوتيات -->
+<section id="challenges">
+  <h2 class="section-title">تحديات، ألغاز وأدوات الذاكرة</h2>
+  <p class="intro">اختبر معلوماتك، استمع للأرشيف، وشارك برأيك!</p>
+
+  <!-- مكتبة الصوتيات التاريخية -->
+  <div class="interactive-box">
+    <h3 style="color:var(--dark-forest); margin-bottom:10px;">📻 ركن الصوتيات والأرشيف الإذاعي</h3>
+    <p>استمع لمحاكاة صوتية لبيان أول نوفمبر التاريخي بصوت الإذاعة السرية:</p>
+    <button class="action-btn" onclick="toggleAudio()" id="audioBtn" style="margin-top:12px;">تشغيل قصاصة صوتية 🔊</button>
+    <div id="audioStatus" style="margin-top:10px; font-size:14px; color:var(--crimson-red); font-weight:bold;"></div>
+  </div>
+
+  <!-- 1. لغز الشيفرة السرية -->
+  <div class="interactive-box">
+    <h3 style="color:var(--dark-forest); margin-bottom:10px;">🔐 لغز الرسالة المشفرة</h3>
+    <p>ما هي كلمة السر الشهيرة التي أُطلقت ليلة اندلاع الثورة في الأوراس؟ (اسم صحابيين جليليْن).</p>
+    <input type="text" id="cipherAnswer" class="cipher-input" placeholder="اكتب كلمة السر هنا...">
+    <button class="action-btn" onclick="checkCipher()">فك الشيفرة</button>
+    <div id="cipherFeedback" class="feedback"></div>
+  </div>
+
+  <!-- 2. لغز من أكون؟ -->
+  <div class="interactive-box">
+    <h3 style="color:var(--dark-forest); margin-bottom:10px;">🕵️‍♂️ لغز: من أكون؟</h3>
+    <p><em>"قُدت الولاية الأولى (الأوراس)، وزعت السلاح، ولقبني الاستعمار بـ (أبو الثورة). فمن أكون؟"</em></p>
+    <div class="quiz-options">
+      <button class="quiz-btn" onclick="checkRiddle(this, false)">ديدوش مراد</button>
+      <button class="quiz-btn" onclick="checkRiddle(this, true)">مصطفى بن بولعيد</button>
+      <button class="quiz-btn" onclick="checkRiddle(this, false)">العربي بن مهيدي</button>
+      <button class="quiz-btn" onclick="checkRiddle(this, false)">زيغود يوسف</button>
+    </div>
+    <div id="riddleFeedback" class="feedback"></div>
+  </div>
+
+  <!-- 3. اختبار التحدي (Quiz) -->
+  <div class="interactive-box">
+    <h3 style="color:var(--dark-forest); margin-bottom:10px;">❓ اختبار التحدي التاريخي (<span id="qCounter" style="color:var(--crimson-red);">السؤال 1 من 4</span>)</h3>
+    <p id="quizQuestion" style="font-size:18px; font-weight:bold; margin:15px 0; color:var(--slate-navy);"></p>
+    <div id="quizOptionsContainer" class="quiz-options"></div>
+    <div id="quizFeedback" class="feedback"></div>
+    <button id="nextQuizBtn" class="action-btn" style="display:none; margin-top:10px;" onclick="nextQuestion()">السؤال التالي ⬅</button>
+  </div>
+
+  <!-- استطلاع الرأي التفاعلي -->
+  <div class="interactive-box">
+    <h3 style="color:var(--dark-forest); margin-bottom:10px;">📊 استطلاع تفاعلي: ما هو أعظم إنجاز للثورة التحريرية برأيك؟</h3>
+    <div class="poll-option" onclick="votePoll(1)">
+      <div class="poll-bar" id="bar1" style="width: 45%;"></div>
+      <div class="poll-text"><span>إشعال الثورة من العدم رغم قوة المستعمر</span> <span id="p1">45%</span></div>
+    </div>
+    <div class="poll-option" onclick="votePoll(2)">
+      <div class="poll-bar" id="bar2" style="width: 30%;"></div>
+      <div class="poll-text"><span>تنظيم مؤتمر الصومام وهياكل الدولة</span> <span id="p2">30%</span></div>
+    </div>
+    <div class="poll-option" onclick="votePoll(3)">
+      <div class="poll-bar" id="bar3" style="width: 25%;"></div>
+      <div class="poll-text"><span>التلاحم الشعبي الأسطوري ومعركة الجزائر</span> <span id="p3">25%</span></div>
+    </div>
+  </div>
+
+  <!-- شهادة تقدير رقمية تفاعلية -->
+  <div class="interactive-box" style="text-align:center;">
+    <h3 style="color:var(--dark-forest); margin-bottom:10px;">🎓 إصدار شهادة فخر زيارة الذاكرة</h3>
+    <p>اكتب اسمك الكامل للحصول على شهادة افتراضية رمزية:</p>
+    <input type="text" id="certName" placeholder="اسمك الكريم..." class="cipher-input" style="max-width:350px;">
+    <br>
+    <button class="action-btn" onclick="generateCert()">إصدار الشهادة 📜</button>
+    <div id="certCard" style="display:none; margin-top:20px; background:var(--sand-cream); border:3px double var(--warm-bronze); padding:24px; border-radius:12px;">
+      <h3 style="color:var(--dark-forest);">شهادة فخر واعتزاز بذاكرة الوطن</h3>
+      <p style="margin:10px 0;">تُشهد هذه المنصة بأن البطل/ـة:</p>
+      <h2 id="certHolderName" style="color:var(--crimson-red); margin:10px 0;"></h2>
+      <p>قد أتم جولة الذاكرة التاريخية بنجاح ووعي وطني عالٍ 🇩🇿</p>
+    </div>
+  </div>
 </section>
 
 <!-- معرض الصور -->
-<section id="gallery" style="background:#f5faf6">
+<section id="gallery" style="background:var(--sand-cream);">
   <h2 class="section-title">معرض صور الثورة الجزائرية</h2>
   <p class="intro">
     وجوه صنعت التاريخ، وذكريات خالدة من مسيرة التحرير.
   </p>
 
   <div class="gallery">
-
     <div class="photo-card">
-      <img loading="lazy"
-      src="https://commons.wikimedia.org/wiki/Special:FilePath/Six_chefs_FLN_-_1954.jpg"
-      alt="القادة الستة التاريخيون">
+      <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Six_chefs_FLN_-_1954.jpg" alt="القادة الستة">
       <h3>القادة الستة التاريخيون</h3>
       <p>صورة تاريخية للقادة الستة قبل اندلاع الثورة.</p>
-      <a href="https://commons.wikimedia.org/wiki/File:Six_chefs_FLN_-_1954.jpg" target="_blank">مصدر الصورة</a>
+      <a href="https://commons.wikimedia.org/wiki/File:Six_chefs_FLN_-_1954.jpg" target="_blank">مصدر الصورة ←</a>
     </div>
-
     <div class="photo-card">
-      <img loading="lazy"
-      src="https://commons.wikimedia.org/wiki/Special:FilePath/Krim_belkacem.jpg"
-      alt="كريم بلقاسم">
+      <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Krim_belkacem.jpg" alt="كريم بلقاسم">
       <h3>كريم بلقاسم</h3>
       <p>أحد أبرز قادة الثورة التحريرية.</p>
-      <a href="https://commons.wikimedia.org/wiki/File:Krim_belkacem.jpg" target="_blank">مصدر الصورة</a>
+      <a href="https://commons.wikimedia.org/wiki/File:Krim_belkacem.jpg" target="_blank">مصدر الصورة ←</a>
     </div>
-
     <div class="photo-card">
-      <img loading="lazy"
-      src="https://commons.wikimedia.org/wiki/Special:FilePath/Rabah_Bitat_-_1954.jpg"
-      alt="رابح بيطاط">
+      <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Rabah_Bitat_-_1954.jpg" alt="رابح بيطاط">
       <h3>رابح بيطاط</h3>
       <p>من أعضاء مجموعة الستة التاريخية.</p>
-      <a href="https://commons.wikimedia.org/wiki/Category:Algerian_War" target="_blank">مصدر الصورة</a>
+      <a href="https://commons.wikimedia.org/wiki/Category:Algerian_War" target="_blank">مصدر الصورة ←</a>
     </div>
-
     <div class="photo-card">
-      <img loading="lazy"
-      src="https://commons.wikimedia.org/wiki/Special:FilePath/Hassiba_Ben_Bouali.jpg"
-      alt="حسيبة بن بوعلي">
+      <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Hassiba_Ben_Bouali.jpg" alt="حسيبة بن بوعلي">
       <h3>حسيبة بن بوعلي</h3>
       <p>رمز من رموز مشاركة المرأة في الثورة.</p>
-      <a href="https://commons.wikimedia.org/wiki/Category:Algerian_War" target="_blank">مصدر الصورة</a>
+      <a href="https://commons.wikimedia.org/wiki/Category:Algerian_War" target="_blank">مصدر الصورة ←</a>
     </div>
-
     <div class="photo-card">
-      <img loading="lazy"
-      src="https://commons.wikimedia.org/wiki/Special:FilePath/Djamila_Boupacha_1963.jpg"
-      alt="جميلة بوباشا">
+      <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Djamila_Boupacha_1963.jpg" alt="جميلة بوباشا">
       <h3>جميلة بوباشا</h3>
       <p>من المناضلات الجزائريات خلال حرب التحرير.</p>
-      <a href="https://commons.wikimedia.org/wiki/Category:Algerian_War" target="_blank">مصدر الصورة</a>
+      <a href="https://commons.wikimedia.org/wiki/Category:Algerian_War" target="_blank">مصدر الصورة ←</a>
     </div>
-
     <div class="photo-card">
-      <img loading="lazy"
-      src="https://commons.wikimedia.org/wiki/Special:FilePath/Les_poseuses_de_bombes_2.jpg"
-      alt="مناضلات جزائريات">
+      <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Les_poseuses_de_bombes_2.jpg" alt="مناضلات جزائريات">
       <h3>نضال المرأة الجزائرية</h3>
       <p>صورة أرشيفية مرتبطة بالمقاومة النسائية خلال الثورة.</p>
-      <a href="https://commons.wikimedia.org/wiki/Category:Algerian_War" target="_blank">مصدر الصورة</a>
+      <a href="https://commons.wikimedia.org/wiki/Category:Algerian_War" target="_blank">مصدر الصورة ←</a>
     </div>
-
   </div>
 </section>
 
-<!-- الخاتمة -->
-<section style="text-align:center">
+<!-- الخاتمة وسجل الوفاء -->
+<section style="text-align:center;">
   <h2 class="section-title">رسالة إلى الأجيال</h2>
 
   <p class="intro">
@@ -450,17 +1165,362 @@ footer span {color:#f5d46a;}
     للحفاظ على الوطن وبناء مستقبله.
   </p>
 
-  <h2 style="color:#087443;margin-top:25px">
+  <!-- سجل الوفاء التفاعلي -->
+  <div class="interactive-box" style="margin-top:30px;">
+    <h3 style="color:var(--dark-forest);">✍️ سجل بصمتك في ذاكرة الوطن</h3>
+    <p style="font-size:15px;">اكتب اسمك أو كلمة وفاء للشهداء لتظهر في جدار الذاكرة:</p>
+    <div style="display:flex; gap:10px; justify-content:center; margin-top:15px; flex-wrap:wrap;">
+      <input type="text" id="visitorName" class="visitor-input" placeholder="اكتب اسمك أو رسالتك...">
+      <button class="action-btn" onclick="addPledge()">تسجيل الوفاء 🇩🇿</button>
+    </div>
+    <div class="pledge-wall" id="pledgeWall">
+      <span class="pledge-tag">🇩🇿 المجد والخلود لشهدائنا الأبرار</span>
+      <span class="pledge-tag">🇩🇿 تحيا الجزائر حرة مستقلة</span>
+    </div>
+  </div>
+
+  <h2 style="color:var(--primary-green);margin-top:25px">
     تحيا الجزائر 🇩🇿
   </h2>
 </section>
 
 </main>
 
+<!-- نافذة عرض سيرة القادة -->
+<div id="leaderModal" class="modal" onclick="closeModal(event)">
+  <div class="modal-content">
+    <span class="close-modal" onclick="document.getElementById('leaderModal').style.display='none'">&times;</span>
+    <h2 id="modalTitle" style="color:var(--dark-forest); margin-bottom:15px;"></h2>
+    <p id="modalBody" style="font-size:16px; line-height:1.8; color:var(--slate-navy);"></p>
+  </div>
+</div>
+
 <footer>
   <p>ذاكرة وطن | <span>أول نوفمبر 1954</span></p>
-  <p>المجد والخلود لشهدائنا الأبرار</p>
+  <p style="font-size:14px; margin-top:6px; color:#94a3b8;">المجد والخلود لشهدائنا الأبرار</p>
+  <p style="font-size:13px; margin-top:10px; color:#e6ccb2; font-weight:bold;">إعداد وإشراف: ميري عبد الله</p>
 </footer>
+
+<script>
+// 1. نافذة القادة
+function openLeaderModal(title, text) {
+  document.getElementById('modalTitle').innerText = title;
+  document.getElementById('modalBody').innerText = text;
+  document.getElementById('leaderModal').style.display = 'flex';
+}
+function closeModal(event) {
+  if (event.target.id === 'leaderModal') {
+    document.getElementById('leaderModal').style.display = 'none';
+  }
+}
+
+// 2. خريطة الولايات التاريخية
+function showWilayaInfo(id, title, desc) {
+  const display = document.getElementById('wilayaDisplay');
+  document.getElementById('wilayaTitle').innerText = title;
+  document.getElementById('wilayaDesc').innerText = desc;
+  display.style.display = 'block';
+}
+
+// 3. الخط الزمني
+function toggleEvent(element) {
+  const details = element.querySelector('.event-details');
+  const arrow = element.querySelector('h3 span:last-child');
+  if (details.style.display === 'block') {
+    details.style.display = 'none';
+    arrow.innerText = '▼';
+  } else {
+    details.style.display = 'block';
+    arrow.innerText = '▲';
+  }
+}
+
+// 4. الخزنة السرية
+function openSafe() {
+  const d1 = document.getElementById('d1').value;
+  const d2 = document.getElementById('d2').value;
+  const d3 = document.getElementById('d3').value;
+  const d4 = document.getElementById('d4').value;
+  const fb = document.getElementById('safeFeedback');
+  const content = document.getElementById('safeContent');
+  
+  if(d1 === '1' && d2 === '9' && d3 === '5' && d4 === '4') {
+    fb.style.color = '#087443';
+    fb.innerText = '🎉 فتحت الخزنة بنجاح!';
+    content.style.display = 'block';
+  } else {
+    fb.style.color = '#b81d24';
+    fb.innerText = '❌ الرمز خاطئ! جرب سنة اندلاع الثورة (1954).';
+  }
+}
+
+// 5. العداد التنازلي
+function updateCountdown() {
+  const now = new Date();
+  let targetYear = now.getFullYear();
+  let targetDate = new Date(targetYear, 6, 5);
+  if (now > targetDate) {
+    targetDate = new Date(targetYear + 1, 6, 5);
+  }
+  const diff = targetDate - now;
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const mins = Math.floor((diff / 1000 / 60) % 60);
+  const secs = Math.floor((diff / 1000) % 60);
+  
+  document.getElementById('days').innerText = String(days).padStart(2, '0');
+  document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+  document.getElementById('mins').innerText = String(mins).padStart(2, '0');
+  document.getElementById('secs').innerText = String(secs).padStart(2, '0');
+}
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+// 6. لعبة تركيب الصور (البازل)
+let puzzleTiles = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+let selectedTileIndex = null;
+
+function initPuzzle() {
+  shufflePuzzle();
+}
+
+function shufflePuzzle() {
+  puzzleTiles.sort(() => Math.random() - 0.5);
+  selectedTileIndex = null;
+  renderPuzzle();
+  document.getElementById('puzzleFeedback').innerText = '🔄 تم خلط القطع! انقر على قطعتين لتبديلهما.';
+  document.getElementById('puzzleFeedback').style.color = 'var(--slate-navy)';
+}
+
+function renderPuzzle() {
+  const board = document.getElementById('puzzleBoard');
+  board.innerHTML = '';
+  const isMobile = window.innerWidth <= 650;
+  const tileSize = isMobile ? 80 : 90;
+  
+  puzzleTiles.forEach((tileValue, currentIndex) => {
+    const tile = document.createElement('div');
+    tile.className = 'puzzle-tile';
+    
+    const origRow = Math.floor(tileValue / 3);
+    const origCol = tileValue % 3;
+    tile.style.backgroundPosition = `-${origCol * tileSize}px -${origRow * tileSize}px`;
+    
+    if (selectedTileIndex === currentIndex) {
+      tile.style.border = '3px solid var(--crimson-red)';
+    }
+    
+    tile.onclick = () => handleTileClick(currentIndex);
+    board.appendChild(tile);
+  });
+}
+
+window.addEventListener('resize', renderPuzzle);
+
+function handleTileClick(index) {
+  if (selectedTileIndex === null) {
+    selectedTileIndex = index;
+    renderPuzzle();
+  } else {
+    let temp = puzzleTiles[selectedTileIndex];
+    puzzleTiles[selectedTileIndex] = puzzleTiles[index];
+    puzzleTiles[index] = temp;
+    selectedTileIndex = null;
+    renderPuzzle();
+    
+    let win = puzzleTiles.every((val, i) => val === i);
+    const fb = document.getElementById('puzzleFeedback');
+    if (win) {
+      fb.style.color = '#087443';
+      fb.innerText = '🏆 مبروك! لقد أتممت تركيب الصورة التاريخية بنجاح تام 🇩🇿';
+    } else {
+      fb.style.color = 'var(--slate-navy)';
+      fb.innerText = '✨ استمر في التبديل لتركيب الصورة الأصلية...';
+    }
+  }
+}
+initPuzzle();
+
+// 7. زر تحميل التطبيق التفاعلي
+function downloadAppFile(e) {
+  e.preventDefault();
+  const status = document.getElementById('downloadStatus');
+  status.innerText = '⏳ جاري تحضير وتنزيل حزمة تطبيق "ذاكرة وطن"...';
+  
+  setTimeout(() => {
+    const appContent = `<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><title>تطبيق ذاكرة وطن</title></head><body style="font-family:Tahoma; text-align:center; padding:50px; background:#f8f6f2;"><h1>🇩🇿 تطبيق ذاكرة وطن</h1><p>أنت الآن تشغل النسخة المثبتة لتطبيق الثورة التحريرية.</p><p>المجد والخلود لشهدائنا الأبرار.</p></body></html>`;
+    const blob = new Blob([appContent], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'zakirat-watan-app.html';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    status.innerText = '✅ تم تنزيل ملف التطبيق بنجاح على جهازك!';
+  }, 1200);
+}
+
+// 8. الصوتيات المحاكية
+let isPlaying = false;
+function toggleAudio() {
+  const status = document.getElementById('audioStatus');
+  const btn = document.getElementById('audioBtn');
+  isPlaying = !isPlaying;
+  if(isPlaying) {
+    status.innerText = '▶ يتم الآن بث قصة البيان الأول عبر الإذاعة السرية...';
+    btn.innerText = 'إيقاف الصوت ⏹';
+  } else {
+    status.innerText = '⏹ متوقف.';
+    btn.innerText = 'تشغيل قصاصة صوتية 🔊';
+  }
+}
+
+// 9. لعبة المطابقة والتوصيل
+function checkMatchingGame() {
+  const m1 = document.getElementById('match1').value;
+  const m2 = document.getElementById('match2').value;
+  const m3 = document.getElementById('match3').value;
+  const fb = document.getElementById('matchingFeedback');
+  
+  if(m1 === 'correct' && m2 === 'correct' && m3 === 'correct') {
+    fb.style.color = '#087443';
+    fb.innerText = '🌟 ممتاز جداً! لقد طابقت جميع البطاقات بشكل صحيح تماماً.';
+  } else {
+    fb.style.color = '#b81d24';
+    fb.innerText = '⚠️ هناك خطأ في إحدى الإجابات أو ترك خانة فارغة، راجع اختياراتك وحاول مجدداً!';
+  }
+}
+
+// 10. لعبة الترتيب التاريخي
+function checkOrderGame(btn, isCorrect) {
+  const feedback = document.getElementById('orderFeedback');
+  if (isCorrect) {
+    feedback.style.color = '#087443';
+    feedback.innerText = '🎉 إجابة صحيحة! هجومات الشمال القسنطيني كانت في 20 أوت 1955.';
+  } else {
+    feedback.style.color = '#b81d24';
+    feedback.innerText = '❌ إجابة خاطئة، حاول مرة أخرى!';
+  }
+}
+
+// 11. لغز الشيفرة
+function checkCipher() {
+  const input = document.getElementById('cipherAnswer').value.trim();
+  const feedback = document.getElementById('cipherFeedback');
+  if (input.includes('عمر') || input.includes('خالد')) {
+    feedback.style.color = '#087443';
+    feedback.innerText = '✅ أحسنت! كلمة السر التاريخية هي: "خالد وعمر".';
+  } else {
+    feedback.style.color = '#b81d24';
+    feedback.innerText = '❌ محاولة خاطئة! تلميح: (خالد وعمر).';
+  }
+}
+
+// 12. لغز من أكون
+function checkRiddle(btn, isCorrect) {
+  const feedback = document.getElementById('riddleFeedback');
+  if (isCorrect) {
+    feedback.style.color = '#087443';
+    feedback.innerText = '🎉 إجابة صحيحة! إنه البطل مصطفى بن بولعيد.';
+  } else {
+    feedback.style.color = '#b81d24';
+    feedback.innerText = '❌ إجابة غير صحيحة، حاول مجدداً!';
+  }
+}
+
+// 13. اختبار المعرفة (Quiz)
+const quizData = [
+  { q: "في أي يوم اندلعت الثورة؟", options: ["ليلة الأحد إلى الإثنين", "ليلة الخميس إلى الجمعة", "ليلة الثلاثاء إلى الأربعاء", "ليلة الجمعة إلى السبت"], correct: 0 },
+  { q: "ما اسم الإذاعة التي أذاعت البيان؟", options: ["إذاعة صوت العرب (القاهرة)", "إذاعة تونس", "إذاعة الجزائر", "إذاعة دمشق"], correct: 0 },
+  { q: "صاحب مقولة (ألقوا بالثورة إلى الشارع):", options: ["العربي بن مهيدي", "ديدوش مراد", "محمد بوضياف", "زيغود يوسف"], correct: 0 },
+  { q: "عدد المناطق العسكرية ليلة أول نوفمبر:", options: ["5 مناطق", "6 ولايات", "4 مناطق", "7 مناطق"], correct: 0 }
+];
+let currentQ = 0, score = 0;
+function loadQuestion() {
+  const qObj = quizData[currentQ];
+  document.getElementById('qCounter').innerText = `السؤال ${currentQ + 1} من ${quizData.length}`;
+  document.getElementById('quizQuestion').innerText = qObj.q;
+  document.getElementById('quizFeedback').innerText = '';
+  document.getElementById('nextQuizBtn').style.display = 'none';
+  const container = document.getElementById('quizOptionsContainer');
+  container.innerHTML = '';
+  qObj.options.forEach((opt, index) => {
+    const btn = document.createElement('button');
+    btn.className = 'quiz-btn';
+    btn.innerText = opt;
+    btn.onclick = () => selectAnswer(index, btn);
+    container.appendChild(btn);
+  });
+}
+function selectAnswer(index, btn) {
+  const qObj = quizData[currentQ];
+  const feedback = document.getElementById('quizFeedback');
+  const buttons = document.querySelectorAll('#quizOptionsContainer .quiz-btn');
+  buttons.forEach(b => b.disabled = true);
+  if (index === qObj.correct) {
+    btn.style.background = '#087443'; btn.style.color = 'white';
+    feedback.style.color = '#087443'; feedback.innerText = '✅ إجابة صحيحة!';
+    score++;
+  } else {
+    btn.style.background = '#b81d24'; btn.style.color = 'white';
+    buttons[qObj.correct].style.background = '#087443'; buttons[qObj.correct].style.color = 'white';
+    feedback.style.color = '#b81d24'; feedback.innerText = '❌ إجابة خاطئة!';
+  }
+  document.getElementById('nextQuizBtn').style.display = 'inline-block';
+}
+function nextQuestion() {
+  currentQ++;
+  if (currentQ < quizData.length) {
+    loadQuestion();
+  } else {
+    document.getElementById('quizQuestion').innerText = `🏆 انتهى التحدي! نتيجتك: ${score} من ${quizData.length}`;
+    document.getElementById('quizOptionsContainer').innerHTML = '';
+    document.getElementById('quizFeedback').innerText = 'أداء رائع ووطني ممتاز 🇩🇿';
+    const nextBtn = document.getElementById('nextQuizBtn');
+    nextBtn.innerText = 'إعادة الاختبار 🔄';
+    nextBtn.onclick = () => { currentQ = 0; score = 0; nextBtn.innerText = 'السؤال التالي ⬅'; nextBtn.onclick = nextQuestion; loadQuestion(); };
+  }
+}
+loadQuestion();
+
+// 14. استطلاع الرأي
+let votes = [45, 30, 25];
+function votePoll(optionNum) {
+  let total = votes[0] + votes[1] + votes[2] + 1;
+  votes[optionNum - 1]++;
+  for(let i=1; i<=3; i++) {
+    let percentage = Math.round((votes[i-1] / total) * 100);
+    document.getElementById('bar' + i).style.width = percentage + '%';
+    document.getElementById('p' + i).innerText = percentage + '%';
+  }
+}
+
+// 15. شهادة التقدير
+function generateCert() {
+  const name = document.getElementById('certName').value.trim();
+  const card = document.getElementById('certCard');
+  if(name !== '') {
+    document.getElementById('certHolderName').innerText = name;
+    card.style.display = 'block';
+  } else {
+    alert('يرجى كتابة الاسم أولاً.');
+  }
+}
+
+// 16. سجل الوفاء
+function addPledge() {
+  const input = document.getElementById('visitorName');
+  const text = input.value.trim();
+  if (text !== '') {
+    const tag = document.createElement('span');
+    tag.className = 'pledge-tag';
+    tag.innerText = `🇩🇿 ${text}`;
+    document.getElementById('pledgeWall').appendChild(tag);
+    input.value = '';
+  }
+}
+</script>
 
 </body>
 </html>
