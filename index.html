@@ -558,12 +558,24 @@ section {
 .puzzle-tile {
   width: 90px;
   height: 90px;
-  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/Six_chefs_FLN_-_1954.jpg");
   background-size: 270px 270px;
   cursor: pointer;
-  border: 1px solid var(--pure-white);
-  border-radius: 4px;
+  border: 2px solid var(--pure-white);
+  border-radius: 6px;
   transition: 0.15s;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 4px;
+}
+
+.puzzle-tile span {
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 4px;
 }
 
 .puzzle-tile:hover {
@@ -944,11 +956,20 @@ footer span {color:#e6ccb2; font-weight:bold;}
   <h2 class="section-title">🎮 ألعاب تفاعلية وطنية</h2>
   <p class="intro">اختبر ذكاءك مع ألعاب الذاكرة، تركيب الصور التاريخية، والتحديات الوطنية!</p>
 
-  <!-- لعبة تركيب الصور (Puzzle) -->
+  <!-- لعبة تركيب الصور (Puzzle) مع خانة لاختيار الصور المتعددة -->
   <div class="interactive-box" style="text-align:center;">
-    <h3 style="color:var(--dark-forest); margin-bottom:10px;">🧩 لعبة تركيب الصورة التاريخية (البازل)</h3>
-    <p style="font-size:14px; color:#475569;">انقر على قطعتين لتبديل أماكنهما وإعادة تركيب الصورة التاريخية للقادة:</p>
+    <h3 style="color:var(--dark-forest); margin-bottom:10px;">🧩 لعبة تركيب الصور التاريخية (البازل المتعدد)</h3>
+    <p style="font-size:14px; color:#475569;">اختر صورة تاريخية من القائمة، ثم انقر على قطعتين لتبديل أماكنهما وإعادة تركيبها:</p>
     
+    <div style="margin: 15px 0;">
+      <label for="puzzleImageSelect" style="font-weight: bold; color: var(--dark-forest);">اختر الصورة للتركيب: </label>
+      <select id="puzzleImageSelect" onchange="changePuzzleImage()" style="padding: 8px; border-radius: 6px; border: 1px solid var(--warm-bronze); background: var(--pure-white); font-family: Tahoma, Arial; font-size: 14px;">
+        <option value="https://commons.wikimedia.org/wiki/Special:FilePath/Six_chefs_FLN_-_1954.jpg">القادة الستة التاريخيون (1954)</option>
+        <option value="https://commons.wikimedia.org/wiki/Special:FilePath/Krim_belkacem.jpg">القائد كريم بلقاسم</option>
+        <option value="https://commons.wikimedia.org/wiki/Special:FilePath/Hassiba_Ben_Bouali.jpg">البطلة حسيبة بن بوعلي</option>
+      </select>
+    </div>
+
     <div class="puzzle-board" id="puzzleBoard"></div>
     
     <button class="action-btn" onclick="shufflePuzzle()">خلط القطع وبدء اللعبة 🔄</button>
@@ -1038,20 +1059,33 @@ footer span {color:#e6ccb2; font-weight:bold;}
   <p style="color:#cbd5e1;">كان البيان إعلاناً سياسياً وتاريخياً لانطلاق الثورة وأهدافها.</p>
 </section>
 
-<!-- قسم التحديات والألغاز -->
+<!-- قسم التحديات والألغاز والأنشطة التفاعلية -->
 <section id="challenges">
   <h2 class="section-title">تحديات، ألغاز وأدوات الذاكرة</h2>
-  <p class="intro">اختبر معلوماتك، استمع للأرشيف، وشارك برأيك!</p>
+  <p class="intro">اختبر معلوماتك، اكتشف قصص الأبطال، وشارك برأيك!</p>
 
-  <!-- مكتبة الصوتيات التاريخية -->
+  <!-- ركن الإلهام -->
   <div class="interactive-box">
-    <h3 style="color:var(--dark-forest); margin-bottom:10px;">📻 ركن الصوتيات والأرشيف الإذاعي</h3>
-    <p>استمع لمحاكاة صوتية لبيان أول نوفمبر التاريخي بصوت الإذاعة السرية:</p>
-    <button class="action-btn" onclick="toggleAudio()" id="audioBtn" style="margin-top:12px;">تشغيل قصاصة صوتية 🔊</button>
-    <div id="audioStatus" style="margin-top:10px; font-size:14px; color:var(--crimson-red); font-weight:bold;"></div>
+    <h3 style="color:var(--dark-forest); margin-bottom:10px;">❤️ ركن الإلهام: أي بطل تلهمك سيرته أكثر؟</h3>
+    <p style="font-size:15px; color:#475569;">اختر الشخصية التاريخية لتتعرف على قصة ملهمة عنها ومذكرة تذكيرية خاصة بها:</p>
+    
+    <div class="quiz-options" style="margin-top:15px;">
+      <button class="quiz-btn" onclick="showHeroStory(1)">مصطفى بن بولعيد 🦁</button>
+      <button class="quiz-btn" onclick="showHeroStory(2)">العربي بن مهيدي 🌟</button>
+      <button class="quiz-btn" onclick="showHeroStory(3)">حسيبة بن بوعلي 🌺</button>
+      <button class="quiz-btn" onclick="showHeroStory(4)">ديدوش مراد 🔥</button>
+    </div>
+    
+    <div id="heroStoryDisplay" style="display:none; margin-top:20px; background:var(--sand-cream); padding:20px; border-radius:10px; border-right:4px solid var(--crimson-red);">
+      <h4 id="heroTitle" style="color:var(--crimson-red); margin-bottom:8px; font-size:18px;"></h4>
+      <p id="heroText" style="font-size:15px; line-height:1.8; color:var(--slate-navy); margin-bottom:12px;"></p>
+      <div style="background:var(--pure-white); padding:10px 14px; border-radius:6px; border:1px dashed var(--warm-bronze); font-size:14px;">
+        <strong>📌 مذكرة الذاكرة:</strong> <span id="heroMemo"></span>
+      </div>
+    </div>
   </div>
 
-  <!-- لغز الشيفرة السرية -->
+  <!-- 1. لغز الشيفرة السرية -->
   <div class="interactive-box">
     <h3 style="color:var(--dark-forest); margin-bottom:10px;">🔐 لغز الرسالة المشفرة</h3>
     <p>ما هي كلمة السر الشهيرة التي أُطلقت ليلة اندلاع الثورة في الأوراس؟ (اسم صحابيين جليليْن).</p>
@@ -1060,7 +1094,7 @@ footer span {color:#e6ccb2; font-weight:bold;}
     <div id="cipherFeedback" class="feedback"></div>
   </div>
 
-  <!-- لغز من أكون؟ -->
+  <!-- 2. لغز من أكون؟ -->
   <div class="interactive-box">
     <h3 style="color:var(--dark-forest); margin-bottom:10px;">🕵️‍♂️ لغز: من أكون؟</h3>
     <p><em>"قُدت الولاية الأولى (الأوراس)، وزعت السلاح، ولقبني الاستعمار بـ (أبو الثورة). فمن أكون؟"</em></p>
@@ -1073,7 +1107,7 @@ footer span {color:#e6ccb2; font-weight:bold;}
     <div id="riddleFeedback" class="feedback"></div>
   </div>
 
-  <!-- اختبار التحدي (Quiz) -->
+  <!-- 3. اختبار التحدي (Quiz) -->
   <div class="interactive-box">
     <h3 style="color:var(--dark-forest); margin-bottom:10px;">❓ اختبار التحدي التاريخي (<span id="qCounter" style="color:var(--crimson-red);">السؤال 1 من 4</span>)</h3>
     <p id="quizQuestion" style="font-size:18px; font-weight:bold; margin:15px 0; color:var(--slate-navy);"></p>
@@ -1229,6 +1263,34 @@ window.addEventListener('beforeinstallprompt', (e) => {
   }
 });
 
+// قصص وقادة ركن الإلهام الجديد
+function showHeroStory(heroId) {
+  const display = document.getElementById('heroStoryDisplay');
+  const title = document.getElementById('heroTitle');
+  const text = document.getElementById('heroText');
+  const memo = document.getElementById('heroMemo');
+  
+  display.style.display = 'block';
+  
+  if(heroId === 1) {
+    title.innerText = "البطل مصطفى بن بولعيد (أبو الثورة)";
+    text.innerText = "يُعد من أبرز مهندسي تفجير ثورة أول نوفمبر وقائد الولاية الأولى (الأوراس). عُرف بحنكته العسكرية الواسعة وشجاعته النادرة، حيث قاد معارك ضارية ضد الاستعمار وأسره العدو ثم استطاع الفرار بطوليّاً من سجن الكدية المحصن.";
+    memo.innerText = "التضحية والصبر هما أساس الثبات على المبادئ الوطنية.";
+  } else if(heroId === 2) {
+    title.innerText = "البطل العربي بن مهيدي (قائد الولاية الخامسة)";
+    text.innerText = "أيقونة البطولة والشموخ، وصاحب المقولة الخالدة: (ألقوا بالثورة إلى الشارع يحتضنها الشعب). استشهد تحت التعذيب الشديد دون أن يبوح بكلمة سر واحدة، وبقي مبتسماً ليرهب عدوه حتى في لحظات استشهاده الأخيرة.";
+    memo.innerText = "الابتسامة في وجه الظلم هي أسمى آيات الانتصار والتحدي.";
+  } else if(heroId === 3) {
+    title.innerText = "البطلة حسيبة بن بوعلي (أيقونة معركة الجزائر)";
+    text.innerText = "مناضلة وفدائية جزائرية شجاعة، ضحت بحياتها وعمرها الزاهي فداءً للوطن. شاركت في نقل القنابل والأدوية وتوفير الملاجئ للمجاهدين في القصبة، واستشهدت رفقة الشهيد البطل علي لابوانت وفداييه الأبرار.";
+    memo.innerText = "دور المرأة الجزائرية في تحرير الوطن ركن أساسي لا غنى عنه.";
+  } else if(heroId === 4) {
+    title.innerText = "البطل ديدوش مراد (قائد الولاية الثانية)";
+    text.innerText = "أحد أعضاء مجموعة الستة التاريخية ومفجري الثورة. تميز بوعيه السياسي والوطني العميق وروح قيادية عالية، واستشهد في ميدان الشرف سنة 1955 بجبل نكادي بولاية سكيكدة وهو في مقتبل العمر.";
+    memo.innerText = "الشباب هم طاقة الأمة الحية وسواعد بنائها المخلصين.";
+  }
+}
+
 // 1. نافذة القادة
 function openLeaderModal(title, text) {
   document.getElementById('modalTitle').innerText = title;
@@ -1303,7 +1365,7 @@ function updateCountdown() {
 setInterval(updateCountdown, 1000);
 updateCountdown();
 
-// 6. لعبة تركيب الصور (البازل)
+// 6. لعبة تركيب الصور (البازل المتعدد مع دعم تغيير الصور ووضوح القطع)
 let puzzleTiles = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 let selectedTileIndex = null;
 
@@ -1311,11 +1373,15 @@ function initPuzzle() {
   shufflePuzzle();
 }
 
+function changePuzzleImage() {
+  shufflePuzzle();
+}
+
 function shufflePuzzle() {
   puzzleTiles.sort(() => Math.random() - 0.5);
   selectedTileIndex = null;
   renderPuzzle();
-  document.getElementById('puzzleFeedback').innerText = '🔄 تم خلط القطع! انقر على قطعتين لتبديلهما.';
+  document.getElementById('puzzleFeedback').innerText = '🔄 تم تغيير الصورة وخلط القطع! انقر على قطعتين لتبديلهما.';
   document.getElementById('puzzleFeedback').style.color = 'var(--slate-navy)';
 }
 
@@ -1325,13 +1391,24 @@ function renderPuzzle() {
   const isMobile = window.innerWidth <= 650;
   const tileSize = isMobile ? 80 : 90;
   
+  const selectElement = document.getElementById('puzzleImageSelect');
+  const currentImgUrl = selectElement ? selectElement.value : "https://commons.wikimedia.org/wiki/Special:FilePath/Six_chefs_FLN_-_1954.jpg";
+  
   puzzleTiles.forEach((tileValue, currentIndex) => {
     const tile = document.createElement('div');
     tile.className = 'puzzle-tile';
     
     const origRow = Math.floor(tileValue / 3);
     const origCol = tileValue % 3;
+    
+    tile.style.backgroundImage = `url("${currentImgUrl}")`;
     tile.style.backgroundPosition = `-${origCol * tileSize}px -${origRow * tileSize}px`;
+    tile.style.backgroundSize = `${tileSize * 3}px ${tileSize * 3}px`;
+    
+    // إظهار رقم القطعة لتوضيح مكانها ومحتواها للمستخدم
+    const numSpan = document.createElement('span');
+    numSpan.innerText = (tileValue + 1);
+    tile.appendChild(numSpan);
     
     if (selectedTileIndex === currentIndex) {
       tile.style.border = '3px solid var(--crimson-red)';
@@ -1388,22 +1465,7 @@ function downloadAppFile(e) {
   }, 1000);
 }
 
-// 8. الصوتيات المحاكية
-let isPlaying = false;
-function toggleAudio() {
-  const status = document.getElementById('audioStatus');
-  const btn = document.getElementById('audioBtn');
-  isPlaying = !isPlaying;
-  if(isPlaying) {
-    status.innerText = '▶ يتم الآن بث قصة البيان الأول عبر الإذاعة السرية...';
-    btn.innerText = 'إيقاف الصوت ⏹';
-  } else {
-    status.innerText = '⏹ متوقف.';
-    btn.innerText = 'تشغيل قصاصة صوتية 🔊';
-  }
-}
-
-// 9. لعبة المطابقة والتوصيل
+// 8. لعبة المطابقة والتوصيل
 function checkMatchingGame() {
   const m1 = document.getElementById('match1').value;
   const m2 = document.getElementById('match2').value;
@@ -1419,7 +1481,7 @@ function checkMatchingGame() {
   }
 }
 
-// 10. لعبة الترتيب التاريخي
+// 9. لعبة الترتيب التاريخي
 function checkOrderGame(btn, isCorrect) {
   const feedback = document.getElementById('orderFeedback');
   if (isCorrect) {
@@ -1431,7 +1493,7 @@ function checkOrderGame(btn, isCorrect) {
   }
 }
 
-// 11. لغز الشيفرة
+// 10. لغز الشيفرة
 function checkCipher() {
   const input = document.getElementById('cipherAnswer').value.trim();
   const feedback = document.getElementById('cipherFeedback');
@@ -1444,7 +1506,7 @@ function checkCipher() {
   }
 }
 
-// 12. لغز من أكون
+// 11. لغز من أكون
 function checkRiddle(btn, isCorrect) {
   const feedback = document.getElementById('riddleFeedback');
   if (isCorrect) {
@@ -1456,7 +1518,7 @@ function checkRiddle(btn, isCorrect) {
   }
 }
 
-// 13. اختبار المعرفة (Quiz)
+// 12. اختبار المعرفة (Quiz)
 const quizData = [
   { q: "في أي يوم اندلعت الثورة؟", options: ["ليلة الأحد إلى الإثنين", "ليلة الخميس إلى الجمعة", "ليلة الثلاثاء إلى الأربعاء", "ليلة الجمعة إلى السبت"], correct: 0 },
   { q: "ما اسم الإذاعة التي أذاعت البيان؟", options: ["إذاعة صوت العرب (القاهرة)", "إذاعة تونس", "إذاعة الجزائر", "إذاعة دمشق"], correct: 0 },
@@ -1490,64 +1552,4 @@ function selectAnswer(index, btn) {
     feedback.style.color = '#087443'; feedback.innerText = '✅ إجابة صحيحة!';
     score++;
   } else {
-    btn.style.background = '#b81d24'; btn.style.color = 'white';
-    buttons[qObj.correct].style.background = '#087443'; buttons[qObj.correct].style.color = 'white';
-    feedback.style.color = '#b81d24'; feedback.innerText = '❌ إجابة خاطئة!';
-  }
-  document.getElementById('nextQuizBtn').style.display = 'inline-block';
-}
-function nextQuestion() {
-  currentQ++;
-  if (currentQ < quizData.length) {
-    loadQuestion();
-  } else {
-    document.getElementById('quizQuestion').innerText = `🏆 انتهى التحدي! نتيجتك: ${score} من ${quizData.length}`;
-    document.getElementById('quizOptionsContainer').innerHTML = '';
-    document.getElementById('quizFeedback').innerText = 'أداء رائع ووطني ممتاز 🇩🇿';
-    const nextBtn = document.getElementById('nextQuizBtn');
-    nextBtn.innerText = 'إعادة الاختبار 🔄';
-    nextBtn.onclick = () => { currentQ = 0; score = 0; nextBtn.innerText = 'السؤال التالي ⬅'; nextBtn.onclick = nextQuestion; loadQuestion(); };
-  }
-}
-loadQuestion();
-
-// 14. استطلاع الرأي
-let votes = [45, 30, 25];
-function votePoll(optionNum) {
-  let total = votes[0] + votes[1] + votes[2] + 1;
-  votes[optionNum - 1]++;
-  for(let i=1; i<=3; i++) {
-    let percentage = Math.round((votes[i-1] / total) * 100);
-    document.getElementById('bar' + i).style.width = percentage + '%';
-    document.getElementById('p' + i).innerText = percentage + '%';
-  }
-}
-
-// 15. شهادة التقدير
-function generateCert() {
-  const name = document.getElementById('certName').value.trim();
-  const card = document.getElementById('certCard');
-  if(name !== '') {
-    document.getElementById('certHolderName').innerText = name;
-    card.style.display = 'block';
-  } else {
-    alert('يرجى كتابة الاسم أولاً.');
-  }
-}
-
-// 16. سجل الوفاء
-function addPledge() {
-  const input = document.getElementById('visitorName');
-  const text = input.value.trim();
-  if (text !== '') {
-    const tag = document.createElement('span');
-    tag.className = 'pledge-tag';
-    tag.innerText = `🇩🇿 ${text}`;
-    document.getElementById('pledgeWall').appendChild(tag);
-    input.value = '';
-  }
-}
-</script>
-
-</body>
-</html>
+    btn.sty
