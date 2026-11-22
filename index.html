@@ -753,10 +753,181 @@ footer span {color:#e6ccb2; font-weight:bold;}
     background-size: 240px 240px;
   }
 }
+
+
+/* خلفية الغابة السينمائية المتحركة — طبقة خلف محتوى الموقع */
+#forestMotionBg {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 1;
+}
+body { background: transparent; }
+body > header, body > main, body > footer, body > .modal {
+  position: relative;
+  z-index: 1;
+}
+
+/* وهج أخضر هادئ يغمر الصفحة دون حجب الأزرار أو المحتوى */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: .2;
+  background:
+    radial-gradient(ellipse at 12% 18%, rgba(65, 190, 105, .34), transparent 42%),
+    radial-gradient(ellipse at 88% 78%, rgba(31, 145, 76, .3), transparent 46%);
+  mix-blend-mode: soft-light;
+  animation: pageGreenGlow 8s ease-in-out infinite alternate;
+}
+@keyframes pageGreenGlow {
+  from { opacity: .13; }
+  to { opacity: .29; }
+}
+
+/* استجابة خضراء واضحة عند الضغط والتركيز */
+button, a, .card, .quiz-btn, .puzzle-tile, .match-row select,
+input, select, textarea {
+  transition: box-shadow .2s ease, filter .2s ease, transform .2s ease, outline-color .2s ease;
+}
+button:active, a:active, .card:active, .quiz-btn:active,
+.puzzle-tile:active, .match-row select:active {
+  transform: scale(.975);
+  filter: brightness(1.08) saturate(1.18);
+  box-shadow: 0 0 0 3px rgba(74, 222, 128, .42), 0 0 22px rgba(34, 197, 94, .58) !important;
+}
+button:focus-visible, a:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible, .puzzle-tile:focus-visible {
+  outline: 2px solid #4ade80;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 5px rgba(74, 222, 128, .2), 0 0 18px rgba(34, 197, 94, .42);
+}
+
+/* لمسات إضاءة خضراء إضافية للعناصر المهمة مع الحفاظ على تخطيطها */
+:root {
+  --soft-green-glow: rgba(34, 197, 94, .22);
+  --bright-green-glow: rgba(74, 222, 128, .48);
+}
+
+header {
+  box-shadow: 0 4px 18px rgba(0, 40, 20, .28), 0 0 24px rgba(34, 197, 94, .18);
+}
+
+nav a:hover, nav a:focus-visible {
+  box-shadow: 0 0 10px rgba(134, 239, 172, .55), inset 0 0 10px rgba(134, 239, 172, .12);
+}
+
+.hero .date, .hero button, .download-app-btn, .action-btn {
+  box-shadow: 0 5px 18px rgba(0, 45, 20, .22), 0 0 17px rgba(34, 197, 94, .2);
+}
+
+.section-title {
+  text-shadow: 0 2px 12px rgba(34, 197, 94, .16);
+}
+.section-title::after {
+  box-shadow: 0 0 8px rgba(74, 222, 128, .55), 0 0 18px rgba(34, 197, 94, .3);
+}
+
+.card, .interactive-box, .highlight, .event, .wilaya-card,
+.photo-card, .poll-option, .pledge-tag, .countdown-box, .time-box {
+  box-shadow: 0 5px 18px rgba(5, 46, 22, .07), 0 0 0 1px rgba(34, 197, 94, .07);
+  transition: box-shadow .28s ease, border-color .28s ease, filter .28s ease, transform .28s ease;
+}
+
+.card:hover, .interactive-box:hover, .highlight:hover, .event:hover,
+.wilaya-card:hover, .photo-card:hover, .poll-option:hover {
+  box-shadow: 0 9px 25px rgba(5, 46, 22, .12), 0 0 0 1px rgba(74, 222, 128, .38), 0 0 22px rgba(34, 197, 94, .2);
+}
+
+.quiz-btn, .action-btn, .hero button, .download-app-btn,
+.more-badge, .photo-card a, .close-modal {
+  transition: box-shadow .25s ease, filter .25s ease, transform .25s ease, background-color .25s ease;
+}
+
+.quiz-btn:hover, .action-btn:hover, .hero button:hover, .download-app-btn:hover,
+.photo-card a:hover, .close-modal:hover {
+  box-shadow: 0 0 0 2px rgba(134, 239, 172, .42), 0 0 22px rgba(34, 197, 94, .48);
+  filter: brightness(1.06);
+}
+
+input, select, textarea, .safe-digit-input, .visitor-input, .cipher-input {
+  box-shadow: inset 0 1px 3px rgba(5, 46, 22, .06), 0 0 0 1px rgba(34, 197, 94, .08);
+}
+
+.feedback, .more-badge, .time-box span {
+  text-shadow: 0 0 10px rgba(74, 222, 128, .28);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .interactive-box:hover, .card:hover, .photo-card:hover {
+    transform: translateY(-3px);
+  }
+}
+
+
+/* إضافات الألعاب الحركية الجديدة فقط */
+.arcade-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:24px;margin:28px 0}
+.arcade-card{position:relative;background:linear-gradient(155deg,#ffffff 0%,#f0f8f1 58%,#e2f2e6 100%);border:1px solid rgba(8,116,67,.32);border-radius:21px;padding:17px;box-shadow:0 12px 28px rgba(4,57,39,.13),0 0 0 1px rgba(104,211,145,.12),0 0 22px rgba(38,150,82,.11);overflow:hidden;transition:transform .28s,box-shadow .28s}
+.arcade-card:before{content:"";position:absolute;inset:0 0 auto;height:4px;background:linear-gradient(90deg,#b4e7bf,#087443,#b4e7bf);opacity:.9}
+.arcade-card:hover{transform:translateY(-5px);box-shadow:0 18px 38px rgba(4,57,39,.2),0 0 28px rgba(38,150,82,.23)}
+.arcade-card h3{color:#06452d;margin:2px 0 7px;font-size:20px;letter-spacing:.1px}
+.arcade-card p{color:#496456;font-size:13px;line-height:1.7;margin-bottom:12px;min-height:42px}
+.arcade-canvas{display:block;width:100%;height:auto;aspect-ratio:640/300;background:#102f24;border:2px solid #4a9a68;border-radius:15px;box-shadow:inset 0 0 28px #061c13,0 7px 18px rgba(4,57,39,.2),0 0 15px rgba(34,139,75,.28);touch-action:manipulation}
+.arcade-meta{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:12px 2px;color:#145b36;font-weight:bold;font-size:13px;flex-wrap:wrap}
+.arcade-meta span{background:rgba(8,116,67,.075);border:1px solid rgba(8,116,67,.12);padding:6px 9px;border-radius:9px}
+.arcade-controls{display:flex;justify-content:center;align-items:center;gap:9px;flex-wrap:wrap;margin-top:11px}
+.arcade-controls button,.arcade-start{border:1px solid rgba(210,255,220,.22);border-radius:12px;padding:10px 15px;background:linear-gradient(145deg,#119052,#07552f);color:white;font-weight:bold;box-shadow:0 5px 13px rgba(4,57,39,.2),inset 0 1px 0 rgba(255,255,255,.2);cursor:pointer;transition:transform .16s,filter .16s,box-shadow .16s;min-width:46px;touch-action:manipulation}
+.arcade-controls button:hover,.arcade-start:hover{filter:brightness(1.12);box-shadow:0 7px 18px rgba(4,57,39,.25),0 0 16px rgba(56,189,95,.35)}
+.arcade-controls button:active,.arcade-start:active{transform:translateY(2px) scale(.96);box-shadow:0 0 20px rgba(56,189,95,.65)}
+.arcade-start{width:100%;margin-top:11px;padding:13px;font-size:15px;background:linear-gradient(110deg,#087443,#0b9254,#07552f);background-size:180% 100%}
+.arcade-status{min-height:30px;text-align:center;color:#07552f;font-weight:bold;font-size:13px;margin-top:8px;padding:7px 10px;border-radius:10px;background:rgba(8,116,67,.07);border:1px solid rgba(8,116,67,.10)}
+@media(max-width:480px){.arcade-card{padding:12px;border-radius:17px}.arcade-card h3{font-size:18px}.arcade-card p{min-height:0}.arcade-meta{font-size:12px}.arcade-controls button{padding:10px 13px}}
+
+
+
+/* تنسيقات قطار الذاكرة والمحقق التاريخي */
+.memory-game-card{position:relative;overflow:hidden;margin:24px auto;padding:22px;max-width:980px;border-radius:22px;background:linear-gradient(145deg,rgba(8,42,31,.97),rgba(13,77,52,.94));border:1px solid rgba(126,231,165,.32);box-shadow:0 12px 34px rgba(0,0,0,.2),0 0 22px rgba(46,204,113,.12);color:#f4fff7}
+.memory-game-card h3{color:#d5ffe2;font-size:clamp(20px,3vw,26px);margin-bottom:8px}
+.memory-game-card p{color:#d4e9dc;line-height:1.8}
+.memory-game-top{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin:14px 0}
+.memory-game-stat{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.13);padding:8px 13px;border-radius:12px;font-weight:bold}
+.train-stage{position:relative;overflow:hidden;border:1px solid rgba(177,255,203,.25);border-radius:18px;background:linear-gradient(#142d25 0%,#315d3e 48%,#17251e 49%,#101b16 100%);min-height:280px}
+#memoryTrainCanvas{display:block;width:100%;height:300px;touch-action:pan-y}
+.train-controls{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:14px}
+.train-control-btn,.memory-action-btn{border:1px solid rgba(183,255,203,.35);background:linear-gradient(135deg,#16834b,#075d37);color:white;padding:11px 20px;border-radius:13px;font-weight:bold;cursor:pointer;box-shadow:0 0 14px rgba(39,174,96,.2);transition:transform .18s,filter .18s}
+.train-control-btn:active,.memory-action-btn:active{transform:scale(.96);filter:brightness(1.2)}
+.train-control-btn{min-width:76px;font-size:18px}
+.memory-action-btn.secondary{background:rgba(255,255,255,.1)}
+.memory-status{min-height:28px;text-align:center;margin-top:12px;color:#d8ffe4;font-weight:bold}
+.detective-scene{position:relative;min-height:280px;border-radius:18px;overflow:hidden;border:1px solid rgba(177,255,203,.25);background:radial-gradient(ellipse at 50% 20%,rgba(211,173,101,.22),transparent 45%),linear-gradient(135deg,#243a31,#101b18 70%);padding:18px}
+.detective-scene:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 48px,rgba(255,255,255,.025) 49px 50px);pointer-events:none}
+.detective-room-title{position:relative;text-align:center;color:#f4dfb5;font-weight:bold;margin-bottom:15px}
+.evidence-grid{position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-width:700px;margin:auto}
+.evidence-item{min-height:92px;border:1px solid rgba(255,224,166,.3);border-radius:14px;background:linear-gradient(145deg,rgba(121,91,51,.45),rgba(36,49,40,.85));color:#fff4dc;padding:12px;cursor:pointer;text-align:center;font-weight:bold;transition:.2s}
+.evidence-item:hover{transform:translateY(-3px);border-color:#e9c77c;box-shadow:0 0 18px rgba(226,190,111,.2)}
+.evidence-item.found{background:linear-gradient(145deg,rgba(17,116,67,.8),rgba(15,57,41,.9));border-color:#75e3a0;color:#e5ffed}
+.evidence-item:disabled{cursor:default}
+.detective-bottom{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:15px}
+.detective-panel{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:13px}
+.detective-panel h4{color:#e2f8e9;margin-bottom:8px}
+.detective-panel p,.detective-panel li{color:#d4e9dc;font-size:14px;line-height:1.8}
+.detective-options{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.detective-options button{border:1px solid rgba(183,255,203,.28);background:rgba(12,92,54,.65);color:#fff;padding:9px 12px;border-radius:10px;cursor:pointer}
+.detective-options button:disabled{opacity:.55;cursor:default}
+@media(max-width:600px){.memory-game-card{padding:15px;margin:18px auto}.train-stage{min-height:230px}#memoryTrainCanvas{height:245px}.detective-bottom{grid-template-columns:1fr}.evidence-grid{gap:8px}.evidence-item{font-size:13px;min-height:82px;padding:9px}}
+
+
 </style>
 </head>
 
 <body>
+<canvas id="forestMotionBg" aria-hidden="true"></canvas>
 
 <header>
   <div class="logo">🇩🇿 ذاكرة وطن</div>
@@ -1028,6 +1199,117 @@ footer span {color:#e6ccb2; font-weight:bold;}
     </div>
     <div id="orderFeedback" class="feedback"></div>
   </div>
+
+  <!-- ألعاب حركية جديدة: أضيفت دون المساس بالألعاب الأصلية -->
+  <div class="arcade-grid" id="newArcadeGames">
+    <article class="arcade-card" data-game="treasure">
+      <h3>💎 صائد الكنوز</h3><p>تحرّك داخل الغابة واجمع الجواهر الذهبية وتجنب الفخاخ قبل انتهاء الوقت.</p>
+      <canvas class="arcade-canvas" id="arcade-treasure" width="640" height="300"></canvas>
+      <div class="arcade-meta"><span>النقاط: <b class="arcade-score">0</b></span><span>الوقت: <b class="arcade-time">45</b> ث</span></div>
+      <div class="arcade-controls"><button data-act="up">▲</button><button data-act="left">◀</button><button data-act="down">▼</button><button data-act="right">▶</button></div>
+      <button class="arcade-start">ابدأ جمع الكنوز</button><div class="arcade-status">اجمع أكبر عدد من الجواهر!</div>
+    </article>
+    <article class="arcade-card" data-game="runner">
+      <h3>🏃 تحدي الحواجز</h3><p>اركض واقفز فوق جذوع الأشجار والصخور، وحاول قطع أكبر مسافة.</p>
+      <canvas class="arcade-canvas" id="arcade-runner" width="640" height="300"></canvas>
+      <div class="arcade-meta"><span>المسافة: <b class="arcade-score">0</b> م</span><span>أفضل نتيجة: <b class="arcade-best">0</b></span></div>
+      <div class="arcade-controls"><button data-act="jump">اقفز ⤴</button></div>
+      <button class="arcade-start">ابدأ الركض</button><div class="arcade-status">اضغط اقفز لتجاوز العقبات!</div>
+    </article>
+    <article class="arcade-card" data-game="race">
+      <h3>🏎️ سباق الغابة</h3><p>قد سيارتك بين المسارات وتفادَ السيارات والعقبات لتحقق أعلى مسافة.</p>
+      <canvas class="arcade-canvas" id="arcade-race" width="640" height="300"></canvas>
+      <div class="arcade-meta"><span>النقاط: <b class="arcade-score">0</b></span><span>السرعة: <b class="arcade-speed">1</b></span></div>
+      <div class="arcade-controls"><button data-act="left">◀ يسار</button><button data-act="right">يمين ▶</button></div>
+      <button class="arcade-start">ابدأ السباق</button><div class="arcade-status">تفادَ العوائق ولا تصطدم!</div>
+    </article>
+    <article class="arcade-card" data-game="maze">
+      <h3>🧭 متاهة الغابة</h3><p>اعثر على البوابة الخضراء عبر الممرات قبل نفاد الوقت.</p>
+      <canvas class="arcade-canvas" id="arcade-maze" width="640" height="300"></canvas>
+      <div class="arcade-meta"><span>الخطوات: <b class="arcade-score">0</b></span><span>الوقت: <b class="arcade-time">60</b> ث</span></div>
+      <div class="arcade-controls"><button data-act="up">▲</button><button data-act="left">◀</button><button data-act="down">▼</button><button data-act="right">▶</button></div>
+      <button class="arcade-start">ابدأ المتاهة</button><div class="arcade-status">تحرك حتى تصل إلى المخرج!</div>
+    </article>
+    <article class="arcade-card" data-game="archery">
+      <h3>🏹 قناص الأهداف</h3><p>حرّك مؤشر التصويب وأطلق السهم على الهدف المتحرك لجمع النقاط.</p>
+      <canvas class="arcade-canvas" id="arcade-archery" width="640" height="300"></canvas>
+      <div class="arcade-meta"><span>الإصابات: <b class="arcade-score">0</b></span><span>الأسهم: <b class="arcade-ammo">10</b></span></div>
+      <div class="arcade-controls"><button data-act="left">◀</button><button data-act="fire">إطلاق 🎯</button><button data-act="right">▶</button></div>
+      <button class="arcade-start">ابدأ التصويب</button><div class="arcade-status">أصب الهدف في مركزه!</div>
+    </article>
+    <article class="arcade-card" data-game="survival">
+      <h3>🌲 البقاء في الغابة</h3><p>اجمع المؤن الخضراء وتجنب الصخور المتساقطة لتصمد أطول مدة.</p>
+      <canvas class="arcade-canvas" id="arcade-survival" width="640" height="300"></canvas>
+      <div class="arcade-meta"><span>المؤن: <b class="arcade-score">0</b></span><span>الطاقة: <b class="arcade-energy">100</b>%</span></div>
+      <div class="arcade-controls"><button data-act="left">◀</button><button data-act="right">▶</button></div>
+      <button class="arcade-start">ابدأ البقاء</button><div class="arcade-status">اجمع المؤن وابتعد عن الصخور!</div>
+    </article>
+    <article class="arcade-card" data-game="platform">
+      <h3>🪜 قفزة نحو القمة</h3><p>اقفز بين المنصات المرتفعة واصعد لأعلى مستوى دون السقوط.</p>
+      <canvas class="arcade-canvas" id="arcade-platform" width="640" height="300"></canvas>
+      <div class="arcade-meta"><span>الارتفاع: <b class="arcade-score">0</b> م</span><span>أفضل ارتفاع: <b class="arcade-best">0</b></span></div>
+      <div class="arcade-controls"><button data-act="left">◀</button><button data-act="jump">اقفز ⤴</button><button data-act="right">▶</button></div>
+      <button class="arcade-start">ابدأ التسلق</button><div class="arcade-status">تحرك واقفز من منصة إلى أخرى!</div>
+    </article>
+    <article class="arcade-card" data-game="bubble">
+      <h3>🟢 انفجار الكرات</h3><p>وجّه المدفع نحو الكرات الملونة وأطلق عليها قبل أن تصل إلى الأسفل.</p>
+      <canvas class="arcade-canvas" id="arcade-bubble" width="640" height="300"></canvas>
+      <div class="arcade-meta"><span>الكرات المنفجرة: <b class="arcade-score">0</b></span><span>المحاولات: <b class="arcade-ammo">20</b></span></div>
+      <div class="arcade-controls"><button data-act="left">◀</button><button data-act="fire">إطلاق ●</button><button data-act="right">▶</button></div>
+      <button class="arcade-start">ابدأ اللعب</button><div class="arcade-status">صوّب بدقة وفجّر الكرات!</div>
+    </article>
+  </div>
+
+  <!-- لعبة قطار الذاكرة -->
+  <div class="memory-game-card" id="memoryTrainGame">
+    <h3>🚂 قطار الذاكرة</h3>
+    <p>قد القطار عبر المسار التاريخي، بدّل المسارات لتفادي الحواجز واجمع الشارات. تزداد السرعة تدريجيًا كلما تقدمت.</p>
+    <div class="memory-game-top">
+      <span class="memory-game-stat">⭐ النقاط: <b id="trainScore">0</b></span>
+      <span class="memory-game-stat">🏅 الشارات: <b id="trainBadges">0</b></span>
+      <span class="memory-game-stat">⚡ المرحلة: <b id="trainLevel">1</b></span>
+    </div>
+    <div class="train-stage"><canvas id="memoryTrainCanvas" aria-label="مسار لعبة قطار الذاكرة"></canvas></div>
+    <div class="train-controls">
+      <button class="train-control-btn" type="button" onclick="moveMemoryTrain(-1)" aria-label="المسار الأيسر">◀</button>
+      <button class="memory-action-btn" type="button" id="trainStartBtn" onclick="startMemoryTrain()">ابدأ الرحلة</button>
+      <button class="train-control-btn" type="button" onclick="moveMemoryTrain(1)" aria-label="المسار الأيمن">▶</button>
+    </div>
+    <div class="memory-status" id="trainStatus" aria-live="polite">استعد للانطلاق! استخدم الأسهم أو أزرار التحكم.</div>
+  </div>
+
+  <!-- لعبة المحقق التاريخي -->
+  <div class="memory-game-card" id="historicalDetectiveGame">
+    <h3>🕵️ المحقق التاريخي</h3>
+    <p>مهمة تحقيق خيالية داخل أرشيف تاريخي: فتّش الغرفة، اجمع الوثائق، ثم اربط الأدلة لاكتشاف التاريخ الذي تشير إليه الرسالة.</p>
+    <div class="detective-scene">
+      <div class="detective-room-title">غرفة الأرشيف السري — اضغط على الأشياء لفحصها</div>
+      <div class="evidence-grid">
+        <button class="evidence-item" type="button" data-clue="note" onclick="inspectHistoricalEvidence('note',this)">📜 رسالة مطوية<br><small>افحص الورقة</small></button>
+        <button class="evidence-item" type="button" data-clue="map" onclick="inspectHistoricalEvidence('map',this)">🗺️ خريطة قديمة<br><small>افحص العلامات</small></button>
+        <button class="evidence-item" type="button" data-clue="radio" onclick="inspectHistoricalEvidence('radio',this)">📻 جهاز لاسلكي<br><small>افحص التسجيل</small></button>
+        <button class="evidence-item" type="button" data-clue="calendar" onclick="inspectHistoricalEvidence('calendar',this)">🗓️ تقويم ممزق<br><small>افحص التاريخ</small></button>
+      </div>
+    </div>
+    <div class="detective-bottom">
+      <div class="detective-panel">
+        <h4>🧾 ملف الأدلة (<span id="evidenceCount">0</span>/4)</h4>
+        <ul id="evidenceLog"><li>لم تُجمع أدلة بعد. ابدأ بتفتيش الغرفة.</li></ul>
+      </div>
+      <div class="detective-panel">
+        <h4>🔎 الاستنتاج النهائي</h4>
+        <p id="detectivePrompt">اجمع الأدلة الأربعة أولًا حتى تتمكن من تقديم استنتاجك.</p>
+        <div class="detective-options" id="detectiveChoices">
+          <button type="button" disabled>1 نوفمبر 1954</button>
+          <button type="button" disabled>20 أوت 1955</button>
+          <button type="button" disabled>19 سبتمبر 1958</button>
+        </div>
+        <div class="memory-status" id="detectiveStatus" aria-live="polite"></div>
+        <button class="memory-action-btn secondary" type="button" onclick="resetHistoricalDetective()">إعادة التحقيق</button>
+      </div>
+    </div>
+  </div>
+
 </section>
 
 <!-- قسم تحميل التطبيق -->
@@ -1447,22 +1729,25 @@ initPuzzle();
 
 // 7. زر تحميل التطبيق التفاعلي
 function downloadAppFile(e) {
-  e.preventDefault();
+  if (e) e.preventDefault();
   const status = document.getElementById('downloadStatus');
-  status.innerText = '⏳ جاري إنشاء ملف التطبيق الشامل بكافة الصور...';
-  
-  setTimeout(() => {
-    const fullHtml = '<!DOCTYPE html>' + document.documentElement.outerHTML;
+  try {
+    const fullHtml = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
     const blob = new Blob([fullHtml], { type: 'text/html;charset=utf-8' });
     const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'zakirat-watan-app.html';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    status.innerText = '✅ تم تنزيل تطبيق "ذاكرة وطن" بكافة صوره بنجاح!';
-  }, 1000);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'zakirat-watan-app.html';
+    link.style.display = 'none';
+    document.body.appendChild(link);
+    // Keep the download in the original click gesture so mobile browsers allow it.
+    link.click();
+    link.remove();
+    if (status) status.innerText = '✅ بدأ تنزيل ملف «ذاكرة وطن» بصيغة HTML. افتح الملف بعد اكتمال التنزيل.';
+    window.setTimeout(() => URL.revokeObjectURL(url), 30000);
+  } catch (error) {
+    if (status) status.innerText = 'تعذّر بدء التنزيل. حاول فتح الموقع في متصفح الهاتف ثم اضغط زر التحميل مجددًا.';
+  }
 }
 
 // 8. لعبة المطابقة والتوصيل
@@ -1552,64 +1837,506 @@ function selectAnswer(index, btn) {
     feedback.style.color = '#087443'; feedback.innerText = '✅ إجابة صحيحة!';
     score++;
   } else {
-    btn.style.background = '#b81d24'; btn.style.color = 'white';
-    buttons[qObj.correct].style.background = '#087443'; buttons[qObj.correct].style.color = 'white';
-    feedback.style.color = '#b81d24'; feedback.innerText = '❌ إجابة خاطئة!';
+    btn.style.style.background = '#b81d24';
+    btn.style.color = 'white';
+    feedback.style.color = '#b81d24';
+    feedback.innerText = `❌ إجابة غير صحيحة. الإجابة الصحيحة: ${qObj.options[qObj.correct]}`;
   }
-  document.getElementById('nextQuizBtn').style.display = 'inline-block';
+  document.getElementById('nextQuizBtn').style.display = 'inline-flex';
 }
+
 function nextQuestion() {
   currentQ++;
-  if (currentQ < quizData.length) {
-    loadQuestion();
-  } else {
-    document.getElementById('quizQuestion').innerText = `🏆 انتهى التحدي! نتيجتك: ${score} من ${quizData.length}`;
-    document.getElementById('quizOptionsContainer').innerHTML = '';
-    document.getElementById('quizFeedback').innerText = 'أداء رائع ووطني ممتاز 🇩🇿';
+  if (currentQ >= quizData.length) {
+    const container = document.getElementById('quizOptionsContainer');
+    document.getElementById('qCounter').innerText = 'اكتمل الاختبار';
+    document.getElementById('quizQuestion').innerText =
+      `انتهى الاختبار! نتيجتك: ${score} من ${quizData.length}`;
+    container.innerHTML = '';
+    document.getElementById('quizFeedback').innerText =
+      score === quizData.length ? '🏆 ممتاز! ذاكرة تاريخية رائعة.' : '🇩🇿 شكرًا لمشاركتك. يمكنك إعادة المحاولة لتحسين نتيجتك.';
     const nextBtn = document.getElementById('nextQuizBtn');
-    nextBtn.innerText = 'إعادة الاختبار 🔄';
-    nextBtn.onclick = () => { currentQ = 0; score = 0; nextBtn.innerText = 'السؤال التالي ⬅'; nextBtn.onclick = nextQuestion; loadQuestion(); };
+    nextBtn.innerText = 'إعادة الاختبار ↻';
+    nextBtn.style.display = 'inline-flex';
+    nextBtn.onclick = restartQuiz;
+    return;
   }
+  loadQuestion();
 }
-loadQuestion();
+
+function restartQuiz() {
+  currentQ = 0;
+  score = 0;
+  const nextBtn = document.getElementById('nextQuizBtn');
+  nextBtn.innerText = 'السؤال التالي ⬅';
+  nextBtn.onclick = nextQuestion;
+  loadQuestion();
+}
 
 // 13. استطلاع الرأي
-let votes = [45, 30, 25];
-function votePoll(optionNum) {
-  let total = votes[0] + votes[1] + votes[2] + 1;
-  votes[optionNum - 1]++;
-  for(let i=1; i<=3; i++) {
-    let percentage = Math.round((votes[i-1] / total) * 100);
-    document.getElementById('bar' + i).style.width = percentage + '%';
-    document.getElementById('p' + i).innerText = percentage + '%';
-  }
+let pollVotes = [45, 30, 25];
+function votePoll(option) {
+  if (![1, 2, 3].includes(option)) return;
+  pollVotes[option - 1] += 1;
+  const total = pollVotes.reduce((sum, value) => sum + value, 0);
+  pollVotes.forEach((value, index) => {
+    const percentage = Math.round((value / total) * 100);
+    const bar = document.getElementById(`bar${index + 1}`);
+    const label = document.getElementById(`p${index + 1}`);
+    if (bar) bar.style.width = `${percentage}%`;
+    if (label) label.innerText = `${percentage}%`;
+  });
 }
 
-// 14. شهادة التقدير
+// 14. إصدار شهادة الزيارة
 function generateCert() {
-  const name = document.getElementById('certName').value.trim();
-  const card = document.getElementById('certCard');
-  if(name !== '') {
-    document.getElementById('certHolderName').innerText = name;
-    card.style.display = 'block';
-  } else {
-    alert('يرجى كتابة الاسم أولاً.');
+  const nameInput = document.getElementById('certName');
+  const name = nameInput.value.trim();
+  if (!name) {
+    nameInput.focus();
+    nameInput.placeholder = 'يرجى كتابة اسمك أولاً';
+    return;
   }
+  document.getElementById('certHolderName').innerText = name;
+  document.getElementById('certCard').style.display = 'block';
 }
 
 // 15. سجل الوفاء
 function addPledge() {
   const input = document.getElementById('visitorName');
-  const text = input.value.trim();
-  if (text !== '') {
-    const tag = document.createElement('span');
-    tag.className = 'pledge-tag';
-    tag.innerText = `🇩🇿 ${text}`;
-    document.getElementById('pledgeWall').appendChild(tag);
-    input.value = '';
+  const message = input.value.trim();
+  if (!message) {
+    input.focus();
+    input.placeholder = 'اكتب اسمك أو رسالتك أولاً...';
+    return;
   }
+  const tag = document.createElement('span');
+  tag.className = 'pledge-tag';
+  tag.innerText = `🇩🇿 ${message}`;
+  document.getElementById('pledgeWall').appendChild(tag);
+  input.value = '';
 }
-</script>
 
+// بدء الاختبار عند تحميل الصفحة
+loadQuestion();
+
+
+// خلفية غابة متحركة: طبقات أشجار متمايلة، ضباب، أوراق طائرة وأشعة ضوء ناعمة.
+(function initCinematicForest() {
+  const canvas = document.getElementById('forestMotionBg');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d', { alpha: false });
+  if (!ctx) return;
+  let w = 0, h = 0, dpr = 1, lastFrame = 0;
+  let leaves = [];
+  let trees = [];
+  const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    w = Math.max(1, window.innerWidth);
+    h = Math.max(1, window.innerHeight);
+    canvas.width = Math.round(w * dpr);
+    canvas.height = Math.round(h * dpr);
+    canvas.style.width = w + 'px';
+    canvas.style.height = h + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const count = Math.max(9, Math.min(22, Math.round(w / 62)));
+    trees = Array.from({ length: count }, (_, i) => ({
+      x: (i / Math.max(1, count - 1)) * w + (Math.random() - .5) * 36,
+      depth: .35 + Math.random() * .65,
+      width: 18 + Math.random() * 32,
+      height: h * (.35 + Math.random() * .36),
+      phase: Math.random() * Math.PI * 2,
+      side: i < count / 2 ? -1 : 1
+    }));
+    leaves = Array.from({ length: Math.max(12, Math.min(26, Math.round(w / 35))) }, () => ({
+      x: Math.random() * w, y: Math.random() * h,
+      size: 3 + Math.random() * 5,
+      speed: .55 + Math.random() * .75,
+      drift: .8 + Math.random() * 1.5,
+      phase: Math.random() * Math.PI * 2,
+      spin: Math.random() * Math.PI * 2
+    }));
+  }
+
+  function drawTree(tree, t) {
+    // الأشجار ثابتة في أماكنها؛ الحركة مخصصة للأوراق فقط.
+    const sway = 0;
+    const baseY = h + 12;
+    const topY = baseY - tree.height;
+    const trunkW = tree.width * (.18 + tree.depth * .08);
+    ctx.save();
+    ctx.globalAlpha = .18 + tree.depth * .38;
+    ctx.fillStyle = tree.depth > .72 ? '#183f30' : '#557a65';
+    ctx.beginPath();
+    ctx.moveTo(tree.x - trunkW, baseY);
+    ctx.quadraticCurveTo(tree.x + sway - trunkW * .55, (baseY + topY) / 2, tree.x + sway, topY);
+    ctx.quadraticCurveTo(tree.x + sway + trunkW * .55, (baseY + topY) / 2, tree.x + trunkW, baseY);
+    ctx.closePath(); ctx.fill();
+    const crownY = topY + tree.height * .18;
+    const crownX = tree.x + sway;
+    for (let j = 0; j < 7; j++) {
+      const angle = (j / 7) * Math.PI * 2;
+      const rx = tree.width * (.48 + .12 * Math.sin(j * 2.4));
+      const ry = tree.width * (.30 + .08 * Math.cos(j * 1.7));
+      const x = crownX + Math.cos(angle) * rx * .72;
+      const y = crownY + Math.sin(angle) * ry * .7;
+      ctx.fillStyle = j % 2 ? '#547b62' : '#315f49';
+      ctx.beginPath(); ctx.ellipse(x, y, rx, ry, angle * .16, 0, Math.PI * 2); ctx.fill();
+    }
+    ctx.restore();
+  }
+
+  function draw(time) {
+    if (!w || !h) return;
+    const t = reducedMotion ? 0 : time;
+    const sky = ctx.createLinearGradient(0, 0, 0, h);
+    sky.addColorStop(0, '#c9d9cc');
+    sky.addColorStop(.48, '#dce6dc');
+    sky.addColorStop(1, '#b7cbb9');
+    ctx.fillStyle = sky; ctx.fillRect(0, 0, w, h);
+
+    // ضوء الفجر المنتشر بين الأشجار.
+    const glow = ctx.createRadialGradient(w * .52, h * .18, 8, w * .52, h * .18, Math.max(w, h) * .72);
+    glow.addColorStop(0, 'rgba(255,250,218,.62)');
+    glow.addColorStop(.42, 'rgba(236,244,224,.22)');
+    glow.addColorStop(1, 'rgba(32,76,52,.08)');
+    ctx.fillStyle = glow; ctx.fillRect(0, 0, w, h);
+
+    // أشجار بعيدة ضبابية لخلق عمق بصري.
+    for (let i = 0; i < 13; i++) {
+      const x = (i / 12) * w;
+      const sway = 0;
+      ctx.fillStyle = 'rgba(72,111,88,.16)';
+      ctx.beginPath(); ctx.moveTo(x + sway, h * .72);
+      ctx.lineTo(x - 28, h * .22 + (i % 4) * 18);
+      ctx.lineTo(x + 34, h * .72); ctx.fill();
+    }
+
+    // أشعة شمس طويلة وشفافة تتحرك ببطء.
+    ctx.save();
+    ctx.globalCompositeOperation = 'screen';
+    for (let i = 0; i < 5; i++) {
+      const x = w * (.26 + i * .105);
+      const ray = ctx.createLinearGradient(x, 0, x + 85, h * .82);
+      ray.addColorStop(0, 'rgba(255,249,211,.16)');
+      ray.addColorStop(1, 'rgba(255,249,211,0)');
+      ctx.fillStyle = ray;
+      ctx.beginPath(); ctx.moveTo(x - 18, 0); ctx.lineTo(x + 24, 0);
+      ctx.lineTo(x + 155, h * .82); ctx.lineTo(x + 72, h * .82); ctx.closePath(); ctx.fill();
+    }
+    ctx.restore();
+
+    trees.sort((a, b) => a.depth - b.depth).forEach(tree => drawTree(tree, t));
+
+    // ضباب متدرج ينساب أفقياً عبر أرض الغابة.
+    for (let i = 0; i < 3; i++) {
+      const y = h * (.58 + i * .13);
+      const mist = ctx.createLinearGradient(0, y - 42, 0, y + 65);
+      mist.addColorStop(0, 'rgba(245,249,239,0)');
+      mist.addColorStop(.5, 'rgba(244,248,239,.22)');
+      mist.addColorStop(1, 'rgba(244,248,239,0)');
+      ctx.fillStyle = mist;
+      ctx.fillRect(0, y - 42, w, 110);
+    }
+
+    // أوراق صغيرة تتمايل وتسقط في الهواء.
+    leaves.forEach(leaf => {
+      if (!reducedMotion) {
+        leaf.y += leaf.speed * 1.45;
+        leaf.x += Math.sin(t * .0022 + leaf.phase) * leaf.drift * 1.35;
+        leaf.spin += .055;
+      }
+      if (leaf.y > h + 12) { leaf.y = -12; leaf.x = Math.random() * w; }
+      ctx.save(); ctx.translate(leaf.x, leaf.y); ctx.rotate(leaf.spin);
+      ctx.fillStyle = 'rgba(39,105,57,.78)';
+      ctx.beginPath(); ctx.ellipse(0, 0, leaf.size * 1.35, leaf.size * .58, 0, 0, Math.PI * 2); ctx.fill();
+      ctx.restore();
+    });
+
+    // طبقة ضوء خفيفة تحفظ هدوء المشهد وتباينه.
+    const veil = ctx.createLinearGradient(0, 0, 0, h);
+    veil.addColorStop(0, 'rgba(255,255,255,.08)');
+    veil.addColorStop(1, 'rgba(235,243,232,.18)');
+    ctx.fillStyle = veil; ctx.fillRect(0, 0, w, h);
+  }
+
+  function animate(now) {
+    if (now - lastFrame >= 33) {
+      draw(now);
+      lastFrame = now;
+    }
+    if (!reducedMotion) requestAnimationFrame(animate);
+  }
+  resize();
+  window.addEventListener('resize', resize, { passive: true });
+  draw(0);
+  if (!reducedMotion) requestAnimationFrame(animate);
+})();
+
+
+
+// محرك الألعاب الحركية الثماني - مستقل عن وظائف الموقع الأصلية.
+(function(){
+  const cards=[...document.querySelectorAll('#newArcadeGames .arcade-card')];
+  const games={};
+  const maze=[
+    '111111111111','100000100001','101110101101','100010000101','111010110101','100000010001','101111010101','100001000101','101101110001','100000000001','111111111111'
+  ];
+  const rand=(a,b)=>Math.random()*(b-a)+a;
+  function init(card){
+    const type=card.dataset.game,canvas=card.querySelector('canvas'),ctx=canvas.getContext('2d');
+    const g={type,card,canvas,ctx,run:false,score:0,time:0,last:0,player:{x:320,y:250,vy:0},items:[],obstacles:[],ammo:0,energy:100,lane:1,aim:320,shots:[],frame:0,steps:0,targetX:320,particles:[],roadOffset:0};
+    games[type]=g;
+    const btn=card.querySelector('.arcade-start');btn.addEventListener('click',()=>start(g));
+    card.querySelectorAll('[data-act]').forEach(b=>{
+      const act=()=>action(g,b.dataset.act);
+      b.addEventListener('click',act);
+    });
+    canvas.addEventListener('pointerdown',e=>{
+      if(!g.run || !['archery','bubble'].includes(g.type)) return;
+      const r=canvas.getBoundingClientRect();g.aim=Math.max(35,Math.min(605,(e.clientX-r.left)/r.width*640));
+      if(g.type==='archery'||g.type==='bubble') action(g,'fire');
+    });
+    draw(g);
+  }
+  function start(g){
+    g.run=true;g.finished=false;g.score=0;g.particles=[];g.time=0;g.last=performance.now();g.frame=0;g.items=[];g.obstacles=[];g.shots=[];g.steps=0;g.energy=100;g.ammo=g.type==='archery'?10:g.type==='bubble'?20:0;g.lane=1;g.aim=320;g.player={x:320,y:245,vy:0};
+    if(g.type==='treasure'){g.player={x:1,y:1};g.items=[{x:4,y:1,k:'gem'},{x:8,y:3,k:'gem'},{x:2,y:7,k:'gem'},{x:9,y:8,k:'gem'},{x:6,y:5,k:'trap'},{x:3,y:4,k:'trap'}];g.time=45;}
+    if(g.type==='maze'){g.player={x:1,y:1};g.time=60;}
+    if(g.type==='runner')g.player={x:105,y:230,vy:0};
+    if(g.type==='race')g.player={x:320,y:245};
+    if(g.type==='archery'){g.time=0;g.targetX=320;}
+    if(g.type==='survival')g.player={x:320,y:255};
+    if(g.type==='platform'){g.player={x:320,y:230,vy:0};g.items=[{x:320,y:270,w:150},{x:180,y:220,w:100},{x:420,y:165,w:100},{x:260,y:110,w:100},{x:430,y:55,w:100}];}
+    if(g.type==='bubble'){for(let i=0;i<7;i++)g.items.push({x:rand(55,585),y:rand(35,145),r:rand(13,21),vx:rand(-1.1,1.1),vy:rand(-.35,.35),c:['#8ee65e','#f6d75c','#69d6d0'][i%3]});}
+    status(g,'اللعب مستمر...');draw(g);requestAnimationFrame(t=>loop(g,t));
+  }
+  function finish(g,msg){g.run=false;g.finished=true;g.best=Math.max(g.best||0,g.score);status(g,msg+' — نتيجتك: '+Math.floor(g.score));draw(g);}
+  function status(g,t){g.card.querySelector('.arcade-status').textContent=t;g.card.querySelector('.arcade-score').textContent=Math.floor(g.score);const tm=g.card.querySelector('.arcade-time');if(tm)tm.textContent=Math.max(0,Math.ceil(g.time));const am=g.card.querySelector('.arcade-ammo');if(am)am.textContent=g.ammo;const en=g.card.querySelector('.arcade-energy');if(en)en.textContent=Math.max(0,Math.ceil(g.energy));const best=g.card.querySelector('.arcade-best');if(best)best.textContent=Math.floor(g.best||0);const sp=g.card.querySelector('.arcade-speed');if(sp)sp.textContent=(1+g.frame/700).toFixed(1);}
+  function oxSafe(x){return 34+x*52+25;} function oySafe(y){return 26+y*27+13;}
+  function action(g,a){if(!g.run)return;
+    if(g.type==='treasure'||g.type==='maze'){
+      const d={left:[-1,0],right:[1,0],up:[0,-1],down:[0,1]}[a];if(!d)return;
+      const nx=g.player.x+d[0],ny=g.player.y+d[1];
+      if(g.type==='treasure'){
+        if(nx<0||nx>10||ny<0||ny>8)return;g.player.x=nx;g.player.y=ny;g.steps++;
+        const i=g.items.findIndex(o=>o.x===nx&&o.y===ny);if(i>=0){if(g.items[i].k==='gem'){g.score+=10;for(let k=0;k<12;k++)g.particles.push({x:oxSafe(nx),y:oySafe(ny),vx:rand(-2.4,2.4),vy:rand(-2.8,1.5),life:28,c:'#8dffd0'});}else{g.score=Math.max(0,g.score-5);status(g,'وقعت في فخ! انتبه.');}g.items.splice(i,1);if(g.items.length<5)g.items.push({x:Math.floor(rand(0,11)),y:Math.floor(rand(0,9)),k:'gem'});}
+      }else{if(maze[ny]&&maze[ny][nx]==='0'){g.player.x=nx;g.player.y=ny;g.steps++;g.score=g.steps;}if(nx===10&&ny===9)finish(g,'أحسنت! وجدت مخرج المتاهة');}
+    }else if(g.type==='runner'){if(a==='jump'&&g.player.y>=229)g.player.vy=-13;}
+    else if(g.type==='race'){if(a==='left')g.lane=Math.max(0,g.lane-1);if(a==='right')g.lane=Math.min(2,g.lane+1);}
+    else if(g.type==='archery'){if(a==='left')g.aim=Math.max(35,g.aim-22);if(a==='right')g.aim=Math.min(605,g.aim+22);if(a==='fire'&&g.ammo>0){g.ammo--;if(Math.abs(g.aim-g.targetX)<35){g.score+=10;g.targetX=rand(65,575);}else status(g,'أخطأت الهدف! حاول مجددًا.');}}
+    else if(g.type==='survival'){if(a==='left')g.player.x=Math.max(35,g.player.x-32);if(a==='right')g.player.x=Math.min(605,g.player.x+32);}
+    else if(g.type==='platform'){if(a==='left')g.player.x-=28;if(a==='right')g.player.x+=28;if(a==='jump'&&g.player.vy===0)g.player.vy=-12;}
+    else if(g.type==='bubble'){if(a==='left')g.aim=Math.max(40,g.aim-24);if(a==='right')g.aim=Math.min(600,g.aim+24);if(a==='fire'&&g.ammo>0){g.ammo--;g.shots.push({x:320,y:275,vx:(g.aim-320)*.018,vy:-8.5});}}
+    draw(g);status(g,'');
+  }
+  function loop(g,now){if(!g.run)return;const dt=Math.min(2,(now-g.last)/16.67||1);g.last=now;g.frame++;
+    const w=640,h=300;
+    g.particles.forEach(p=>{p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=.08*dt;p.life--;});g.particles=g.particles.filter(p=>p.life>0);
+    if(g.type==='treasure'||g.type==='maze'){g.time-=dt/60;if(g.time<=0)finish(g,'انتهى الوقت');if(g.type==='treasure'&&g.score>=100)finish(g,'جمعت كنزًا رائعًا!');}
+    if(g.type==='runner'){
+      g.score+=.12*dt;g.player.vy+=.65*dt;g.player.y+=g.player.vy*dt;if(g.player.y>230){g.player.y=230;g.player.vy=0;}
+      if(g.frame%75===0)g.obstacles.push({x:670,y:236,w:rand(24,40),h:rand(25,48)});
+      g.obstacles.forEach(o=>o.x-=5.2*dt);g.obstacles=g.obstacles.filter(o=>o.x>-50);
+      if(g.obstacles.some(o=>o.x<g.player.x+24&&o.x+o.w>g.player.x-15&&g.player.y+30>236-o.h))finish(g,'اصطدمت بعائق');
+    }
+    if(g.type==='race'){
+      g.score+=.08*dt;if(g.frame%48===0)g.obstacles.push({lane:Math.floor(rand(0,3)),y:-30});g.obstacles.forEach(o=>o.y+=4.2*dt+g.frame/1000);g.obstacles=g.obstacles.filter(o=>o.y<330);
+      if(g.obstacles.some(o=>o.lane===g.lane&&o.y>215&&o.y<280))finish(g,'حدث اصطدام!');
+    }
+    if(g.type==='archery'){g.targetX=320+Math.sin(g.frame*.035)*210;if(g.ammo===0)finish(g,'انتهت الأسهم');}
+    if(g.type==='survival'){
+      if(g.frame%38===0)g.items.push({x:rand(30,610),y:-20,k:Math.random()<.72?'food':'rock'});
+      g.items.forEach(o=>o.y+=3.2*dt);g.items=g.items.filter(o=>o.y<320);
+      g.items.forEach(o=>{if(Math.abs(o.x-g.player.x)<27&&Math.abs(o.y-255)<24){if(o.k==='food'){g.score+=5;g.energy=Math.min(100,g.energy+8);}else{g.energy-=24;}o.y=400;}});
+      g.energy-=.025*dt;if(g.energy<=0)finish(g,'نفدت طاقتك');
+    }
+    if(g.type==='platform'){
+      g.player.vy+=.48*dt;g.player.y+=g.player.vy*dt;g.player.x=Math.max(20,Math.min(620,g.player.x));
+      g.items.forEach(p=>{if(g.player.vy>0&&g.player.x>p.x-p.w/2&&g.player.x<p.x+p.w/2&&g.player.y+20>=p.y&&g.player.y+20<=p.y+13){g.player.y=p.y-20;g.player.vy=0;g.score=Math.max(g.score,Math.round((270-p.y)/10));}});
+      if(g.player.y>315)finish(g,'سقطت! حاول مرة أخرى');
+    }
+    if(g.type==='bubble'){
+      g.items.forEach(o=>{o.x+=o.vx*dt;o.y+=o.vy*dt;if(o.x<o.r||o.x>640-o.r)o.vx*=-1;});
+      g.shots.forEach(b=>{b.x+=b.vx*dt;b.y+=b.vy*dt;});
+      g.shots=g.shots.filter(b=>{let hit=g.items.findIndex(o=>Math.hypot(o.x-b.x,o.y-b.y)<o.r+8);if(hit>=0){const o=g.items.splice(hit,1)[0];g.score+=10;for(let k=0;k<9;k++)g.particles.push({x:o.x,y:o.y,vx:rand(-2.5,2.5),vy:rand(-2.8,2.2),life:24,c:o.c});g.items.push({x:rand(55,585),y:rand(35,145),r:rand(15,22),vx:rand(-1.1,1.1),vy:rand(-.35,.35),c:['#8ee65e','#f6d75c','#69d6d0','#e78bd9'][Math.floor(rand(0,4))]});return false;}return b.y>-15;});
+      if(g.items.some(o=>o.y>245))finish(g,'وصلت الكرات إلى الأسفل');if(g.ammo===0&&g.shots.length===0)finish(g,'انتهت المحاولات');
+    }
+    status(g,'');draw(g);if(g.run)requestAnimationFrame(t=>loop(g,t));
+  }
+  function draw(g){
+    const c=g.ctx,w=640,h=300;c.clearRect(0,0,w,h);
+    const rr=(x,y,ww,hh,r,fill,stroke)=>{c.beginPath();c.roundRect(x,y,ww,hh,r);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=2;c.stroke();}};
+    const glow=(x,y,r,color,alpha=.5)=>{const q=c.createRadialGradient(x,y,1,x,y,r);q.addColorStop(0,color.replace('ALPHA',alpha));q.addColorStop(1,color.replace('ALPHA','0'));c.fillStyle=q;c.fillRect(x-r,y-r,r*2,r*2);};
+    const text=(t,x,y,size=18,color='#f2fff4',align='center')=>{c.save();c.textAlign=align;c.font='bold '+size+'px Tahoma,Arial';c.shadowColor='rgba(0,0,0,.55)';c.shadowBlur=5;c.fillStyle=color;c.fillText(t,x,y);c.restore();};
+    const scene=(night=false)=>{
+      const sky=c.createLinearGradient(0,0,0,h);sky.addColorStop(0,night?'#071a24':'#75b7a0');sky.addColorStop(.48,night?'#164638':'#b7d7a6');sky.addColorStop(1,night?'#102d24':'#365f3c');c.fillStyle=sky;c.fillRect(0,0,w,h);
+      glow(500,58,170,night?'rgba(75,210,139,ALPHA)':'rgba(255,239,166,ALPHA)',.35);
+      for(let layer=0;layer<3;layer++)for(let i=0;i<12;i++){const x=i*62-18+(layer%2)*25,y=175-layer*24-(i%3)*9,ht=95+((i*37+layer*19)%72),col=['#244f3a','#1d4935','#163d30'][layer];c.fillStyle=col;c.beginPath();c.moveTo(x-29,y+ht);c.lineTo(x,y-ht*.42);c.lineTo(x+31,y+ht);c.closePath();c.fill();c.fillStyle=layer===0?'#477c50':'#2b6543';c.beginPath();c.arc(x,y+4,25+layer*5,0,Math.PI*2);c.fill();}
+      const ground=c.createLinearGradient(0,215,0,300);ground.addColorStop(0,'#477d49');ground.addColorStop(1,'#173e2d');c.fillStyle=ground;c.fillRect(0,215,w,85);
+      c.strokeStyle='rgba(203,238,174,.18)';c.lineWidth=2;for(let i=0;i<24;i++){let x=(i*53+g.frame*-.6)%680;c.beginPath();c.moveTo(x,260+(i%4)*8);c.lineTo(x+8,246+(i%4)*8);c.stroke();}
+      for(let i=0;i<5;i++){const x=(i*151+g.frame*-.45)%700;c.fillStyle='rgba(221,255,202,.55)';c.beginPath();c.arc(x,70+(i*31)%130,1.8,0,Math.PI*2);c.fill();}
+    };
+    const gem=(x,y,r=12)=>{glow(x,y,r*3,'rgba(76,255,211,ALPHA)',.6);c.save();c.translate(x,y);c.rotate(Math.PI/4);const gr=c.createLinearGradient(-r,-r,r,r);gr.addColorStop(0,'#f6ffff');gr.addColorStop(.35,'#6df5dc');gr.addColorStop(1,'#087f83');c.fillStyle=gr;c.beginPath();c.rect(-r*.72,-r*.72,r*1.44,r*1.44);c.fill();c.strokeStyle='#d8fff1';c.lineWidth=2;c.stroke();c.restore();};
+    const hero=(x,y,scale=1)=>{c.save();c.translate(x,y);c.scale(scale,scale);glow(0,0,34,'rgba(115,255,165,ALPHA)',.38);c.fillStyle='#263e34';c.beginPath();c.ellipse(0,19,17,7,0,0,Math.PI*2);c.fill();rr(-10,-10,20,27,7,'#d6a35d','#f5d9a1');c.fillStyle='#173c2c';c.beginPath();c.arc(0,-17,10,0,Math.PI*2);c.fill();c.fillStyle='#e8b98c';c.beginPath();c.arc(0,-18,6,0,Math.PI*2);c.fill();c.strokeStyle='#f2d7a2';c.lineWidth=4;c.beginPath();c.moveTo(-8,1);c.lineTo(-15,13);c.moveTo(8,1);c.lineTo(15,13);c.stroke();c.restore();};
+    const car=(x,y,color='#e6f3ed',scale=1)=>{c.save();c.translate(x,y);c.scale(scale,scale);glow(0,0,42,'rgba(77,255,145,ALPHA)',.24);rr(-19,-30,38,61,10,'#13271f','#a8d4b4');rr(-14,-20,28,22,7,color,'#d9f5df');rr(-13,7,26,13,4,'#294f3d','#9bc6a7');c.fillStyle='#f5df9b';c.fillRect(-15,-26,7,4);c.fillRect(8,-26,7,4);c.fillStyle='#e55c4d';c.fillRect(-15,25,7,4);c.fillRect(8,25,7,4);c.fillStyle='#101b16';c.fillRect(-23,-17,5,13);c.fillRect(18,-17,5,13);c.fillRect(-23,13,5,13);c.fillRect(18,13,5,13);c.restore();};
+    scene(g.type==='maze'||g.type==='treasure');
+    if(g.type==='treasure'){
+      // أرضية استكشاف حجرية مع إضاءة الجواهر وصندوق كنز.
+      const ox=34,oy=26,cw=52,ch=27;for(let y=0;y<9;y++)for(let x=0;x<11;x++){const xx=ox+x*cw,yy=oy+y*ch;c.fillStyle=(x+y)%2?'rgba(13,48,34,.38)':'rgba(170,211,148,.13)';rr(xx,yy,cw-2,ch-2,4,c.fillStyle,'rgba(206,241,184,.08)');}
+      g.items.forEach(o=>{if(o.k==='gem')gem(ox+o.x*cw+25,oy+o.y*ch+13,9);else{text('✦',ox+o.x*cw+25,oy+o.y*ch+21,19,'#ff8068');}});
+      // حقيبة وكنز صغير قرب اللاعب
+      hero(ox+g.player.x*cw+25,oy+g.player.y*ch+10,.75);text('صائد الكنوز',18,22,13,'#e8ffdb','left');
+    }else if(g.type==='maze'){
+      const size=24,ox=176,oy=18;maze.forEach((row,y)=>[...row].forEach((v,x)=>{const xx=ox+x*size,yy=oy+y*size;if(v==='1'){rr(xx,yy,size-2,size-2,4,'#244b36','#477a4d');c.strokeStyle='rgba(200,237,180,.16)';c.beginPath();c.moveTo(xx+4,yy+6);c.lineTo(xx+size-7,yy+6);c.stroke();}else{rr(xx,yy,size-2,size-2,3,'rgba(194,222,158,.22)','rgba(220,246,188,.08)');}}));
+      glow(ox+10*size+10,oy+9*size+10,40,'rgba(89,255,145,ALPHA)',.8);text('✦',ox+10*size+10,oy+9*size+19,24,'#d7ff87');hero(ox+g.player.x*size+10,oy+g.player.y*size+11,.65);text('المخرج',ox+10*size+10,oy+9*size-7,10,'#f5ffd8');
+    }else if(g.type==='runner'){
+      // مسار جري عميق، جذوع وصخور بظلال واقعية.
+      c.fillStyle='#8caa66';c.fillRect(0,240,w,7);c.fillStyle='#315438';c.fillRect(0,247,w,53);for(let i=0;i<18;i++){let x=(i*57-g.frame*5)%700;c.fillStyle='rgba(230,244,177,.28)';c.fillRect(x,257+(i%3)*9,22,2);}
+      // runner sprite
+      c.save();c.translate(g.player.x,g.player.y);const bob=Math.sin(g.frame*.28)*3;c.rotate(g.player.vy===0?Math.sin(g.frame*.25)*.08:0);glow(0,0,34,'rgba(102,255,160,ALPHA)',.28);c.strokeStyle='#e6bd83';c.lineWidth=7;c.lineCap='round';c.beginPath();c.moveTo(-4,3);c.lineTo(-13,19+bob);c.moveTo(4,3);c.lineTo(13,18-bob);c.stroke();rr(-10,-13,20,22,7,'#e3a64f','#fff0c9');c.fillStyle='#183c2c';c.beginPath();c.arc(0,-20,9,0,Math.PI*2);c.fill();c.fillStyle='#dcae85';c.beginPath();c.arc(0,-20,6,0,Math.PI*2);c.fill();c.strokeStyle='#e3a64f';c.lineWidth=6;c.beginPath();c.moveTo(-8,-7);c.lineTo(-18,2+bob);c.moveTo(8,-7);c.lineTo(17,-15-bob);c.stroke();c.restore();
+      g.obstacles.forEach(o=>{if(o.h>35){rr(o.x,o.y-o.h,o.w,o.h,8,'#76513a','#d0a477');c.strokeStyle='rgba(255,220,160,.4)';c.beginPath();c.moveTo(o.x+6,o.y-o.h+7);c.lineTo(o.x+o.w-6,o.y-o.h+7);c.stroke();}else{glow(o.x+o.w/2,o.y-o.h/2,30,'rgba(255,150,76,ALPHA)',.25);c.fillStyle='#7c8a68';c.beginPath();c.ellipse(o.x+o.w/2,o.y-o.h/2,o.w/2,o.h/2,0,0,Math.PI*2);c.fill();}});text('اقفز فوق العوائق',18,24,13,'#eaffdb','left');
+    }else if(g.type==='race'){
+      // طريق ثلاثي المسارات بمنظور وشرائط متحركة.
+      c.fillStyle='#183c2b';c.fillRect(0,0,640,300);c.fillStyle='#263a35';c.beginPath();c.moveTo(170,0);c.lineTo(470,0);c.lineTo(590,300);c.lineTo(50,300);c.closePath();c.fill();c.strokeStyle='#d5e5c8';c.lineWidth=5;c.beginPath();c.moveTo(170,0);c.lineTo(50,300);c.moveTo(470,0);c.lineTo(590,300);c.stroke();
+      c.strokeStyle='rgba(239,246,216,.8)';c.lineWidth=3;for(let lane=1;lane<=2;lane++){for(let i=0;i<7;i++){const y=(i*58+g.frame*7)%340-35;const x=170+lane*100+(y/300)*(lane===1?-12:12);c.beginPath();c.moveTo(x,y);c.lineTo(x+((y+35)/300)*8,y+29);c.stroke();}}
+      g.obstacles.forEach(o=>car(220+o.lane*100,o.y,'#d6e3d9',.82));car(220+g.lane*100,248,'#4bd28a',1.05);text('سباق الغابة',18,24,13,'#eaffdb','left');
+    }else if(g.type==='archery'){
+      // منصة رماية وهدف دائري متعدد الحلقات.
+      c.fillStyle='rgba(13,43,31,.48)';rr(34,28,572,245,18,'rgba(10,37,28,.36)','rgba(205,242,202,.18)');c.strokeStyle='#a8d8b0';c.lineWidth=7;c.beginPath();c.moveTo(80,85);c.lineTo(560,85);c.stroke();
+      glow(g.targetX,85,54,'rgba(255,204,89,ALPHA)',.55);for(let i=4;i>=0;i--){c.beginPath();c.arc(g.targetX,85,28-i*5,0,Math.PI*2);c.fillStyle=['#f7f1d4','#d94d43','#f4d45b','#d94d43','#fff2bc'][i];c.fill();}c.beginPath();c.arc(g.targetX,85,4,0,Math.PI*2);c.fillStyle='#243c2e';c.fill();
+      c.strokeStyle='#d9bd83';c.lineWidth=5;c.beginPath();c.arc(g.aim,230,43,-1.25,1.25);c.stroke();c.strokeStyle='#f5e7c7';c.lineWidth=2;c.beginPath();c.moveTo(g.aim,190);c.lineTo(g.aim,267);c.stroke();c.strokeStyle='#e9d7a6';c.beginPath();c.moveTo(g.aim-22,230);c.lineTo(g.aim+22,230);c.stroke();text('🏹',g.aim,282,25);text('حرّك المؤشر ثم أطلق',18,24,13,'#eaffdb','left');
+    }else if(g.type==='survival'){
+      // أرض الغابة مع مسارات سقوط واضحة.
+      c.fillStyle='rgba(17,56,37,.35)';c.fillRect(0,225,640,75);for(let i=0;i<7;i++){let x=45+i*91;c.fillStyle='rgba(195,235,157,.12)';c.fillRect(x,0,2,225);}
+      g.items.forEach(o=>{if(o.k==='food'){glow(o.x,o.y,26,'rgba(102,255,145,ALPHA)',.45);c.save();c.translate(o.x,o.y);c.rotate(Math.sin(g.frame*.08+o.x)*.25);c.fillStyle='#74db74';c.beginPath();c.ellipse(-5,0,8,15,-.55,0,Math.PI*2);c.ellipse(6,-3,8,14,.55,0,Math.PI*2);c.fill();c.strokeStyle='#d9ffb5';c.lineWidth=2;c.beginPath();c.moveTo(0,12);c.lineTo(0,-12);c.stroke();c.restore();}else{glow(o.x,o.y,27,'rgba(255,115,76,ALPHA)',.3);c.fillStyle='#78847d';c.beginPath();c.moveTo(o.x-14,o.y+10);c.lineTo(o.x-9,o.y-9);c.lineTo(o.x+4,o.y-17);c.lineTo(o.x+16,o.y-5);c.lineTo(o.x+13,o.y+11);c.closePath();c.fill();c.strokeStyle='#c3c9bd';c.stroke();}});
+      hero(g.player.x,258,.95);text('اجمع الأوراق وتجنب الصخور',18,24,13,'#eaffdb','left');
+    }else if(g.type==='platform'){
+      // صعود رأسي مع منصات خشبية متدرجة وتوهج للقمة.
+      for(let i=0;i<8;i++){const x=(i*91+28)%640,y=35+(i*47)%175;glow(x,y,18,'rgba(111,255,166,ALPHA)',.22);c.fillStyle='rgba(225,255,220,.38)';c.beginPath();c.arc(x,y,2,0,Math.PI*2);c.fill();}
+      g.items.forEach((p,i)=>{glow(p.x,p.y+5,p.w*.65,'rgba(106,255,150,ALPHA)',.3);rr(p.x-p.w/2,p.y,p.w,12,6,'#9a7046','#e5c18a');rr(p.x-p.w/2+4,p.y+3,p.w-8,4,3,'#c59a62');});hero(g.player.x,g.player.y+3,.9);text('ارتفع إلى القمة',18,24,13,'#eaffdb','left');
+    }else if(g.type==='bubble'){
+      // فقاعات زجاجية لامعة ومدفع بتصميم أركيد.
+      g.items.forEach(o=>{glow(o.x,o.y,o.r*2.5,'rgba(115,255,204,ALPHA)',.25);const grad=c.createRadialGradient(o.x-o.r*.35,o.y-o.r*.4,2,o.x,o.y,o.r*1.25);grad.addColorStop(0,'#ffffff');grad.addColorStop(.22,o.c);grad.addColorStop(1,'#174b3a');c.fillStyle=grad;c.beginPath();c.arc(o.x,o.y,o.r,0,Math.PI*2);c.fill();c.strokeStyle='rgba(255,255,255,.8)';c.lineWidth=2;c.stroke();c.fillStyle='rgba(255,255,255,.72)';c.beginPath();c.ellipse(o.x-o.r*.32,o.y-o.r*.38,o.r*.22,o.r*.12,-.6,0,Math.PI*2);c.fill();});
+      g.shots.forEach(b=>{glow(b.x,b.y,16,'rgba(133,255,188,ALPHA)',.6);c.fillStyle='#eaffd7';c.beginPath();c.arc(b.x,b.y,6,0,Math.PI*2);c.fill();});
+      c.save();c.translate(320,276);c.rotate(Math.atan2(190-276,g.aim-320));rr(-13,-20,26,43,8,'#9ab9a0','#e2f6df');rr(-7,-44,14,33,6,'#d6e8cf','#ffffff');glow(0,-38,25,'rgba(113,255,158,ALPHA)',.3);c.restore();text('صوّب نحو الفقاعات',18,24,13,'#eaffdb','left');
+    }
+    // مؤشرات جمالية ثابتة داخل كل ساحة.
+    c.fillStyle='rgba(3,20,14,.45)';rr(520,12,102,25,12,'rgba(3,20,14,.48)','rgba(218,255,224,.15)');text('غابة التحدّي',571,30,11,'#d9ffdc');
+    g.particles.forEach(p=>{c.save();c.globalAlpha=Math.max(0,p.life/28);c.fillStyle=p.c;c.shadowColor=p.c;c.shadowBlur=12;c.beginPath();c.arc(p.x,p.y,2.5,0,Math.PI*2);c.fill();c.restore();});
+    if(!g.run){c.fillStyle='rgba(3,17,12,.48)';c.fillRect(0,0,w,h);glow(320,140,150,'rgba(80,255,140,ALPHA)',.22);rr(130,101,380,92,18,'rgba(5,31,21,.86)','rgba(175,255,194,.48)');text(g.finished?'انتهت الجولة':'استعد للمغامرة',320,137,24,'#f0ffe9');text(g.finished?'نتيجتك: '+Math.floor(g.score):'اضغط زر البدء للدخول إلى اللعبة',320,169,15,'#b9f7c8');}
+  }
+  cards.forEach(init);
+  document.addEventListener('keydown',e=>{const active=document.activeElement;const card=active&&active.closest&&active.closest('.arcade-card');if(!card)return;const g=games[card.dataset.game];if(!g)return;const map={ArrowLeft:'left',ArrowRight:'right',ArrowUp:'up',ArrowDown:'down',' ':'jump',Enter:'fire'};if(map[e.key]){e.preventDefault();action(g,map[e.key]);}});
+})();
+
+// لعبة قطار الذاكرة — مستقلة عن بقية ألعاب الموقع
+(() => {
+  const canvas = document.getElementById('memoryTrainCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const scoreEl = document.getElementById('trainScore');
+  const badgesEl = document.getElementById('trainBadges');
+  const levelEl = document.getElementById('trainLevel');
+  const statusEl = document.getElementById('trainStatus');
+  const startBtn = document.getElementById('trainStartBtn');
+  const state = {running:false,lane:1,score:0,badges:0,level:1,objects:[],last:0,spawn:0,speed:230,raf:0,swipeX:null};
+  let width=800,height=300,dpr=1;
+  function resize(){
+    const r=canvas.getBoundingClientRect(); dpr=Math.min(window.devicePixelRatio||1,2);
+    width=Math.max(320,r.width); height=Math.max(220,r.height);
+    canvas.width=Math.round(width*dpr); canvas.height=Math.round(height*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0); draw();
+  }
+  function roundedRect(x,y,w,h,r,fill){ctx.fillStyle=fill;ctx.beginPath();ctx.roundRect(x,y,w,h,r);ctx.fill();}
+  function draw(){
+    ctx.clearRect(0,0,width,height);
+    const sky=ctx.createLinearGradient(0,0,0,height);sky.addColorStop(0,'#193b2d');sky.addColorStop(.55,'#52764b');sky.addColorStop(.56,'#26382b');sky.addColorStop(1,'#101a15');ctx.fillStyle=sky;ctx.fillRect(0,0,width,height);
+    // تلال وأشجار ثابتة في الخلفية
+    ctx.fillStyle='#254d35';ctx.beginPath();ctx.moveTo(0,height*.58);ctx.lineTo(width*.18,height*.28);ctx.lineTo(width*.34,height*.57);ctx.lineTo(width*.55,height*.24);ctx.lineTo(width*.78,height*.58);ctx.lineTo(width,height*.3);ctx.lineTo(width,height);ctx.lineTo(0,height);ctx.fill();
+    for(let i=0;i<11;i++){let x=(i*97+25)%width,y=height*.48+(i%3)*8;ctx.fillStyle='#173b2b';ctx.beginPath();ctx.arc(x,y,14+(i%3)*4,0,Math.PI*2);ctx.fill();ctx.fillRect(x-3,y,6,35);}
+    // خطوط السكك في منظور
+    const horizon=height*.48, bottom=height*1.08;
+    for(let lane=0;lane<3;lane++){
+      const topX=width*(.5+(lane-1)*.045),bottomX=width*(.5+(lane-1)*.29);
+      ctx.strokeStyle='#b6b9a5';ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(topX-7,horizon);ctx.lineTo(bottomX-24,bottom);ctx.moveTo(topX+7,horizon);ctx.lineTo(bottomX+24,bottom);ctx.stroke();
+      ctx.strokeStyle='rgba(220,210,170,.55)';ctx.lineWidth=3;
+      for(let k=0;k<9;k++){let t=(k/9+((state.score/100)%1))%1;let y=horizon+(bottom-horizon)*t;let cx=width*.5+(lane-1)*width*.29*t;let half=7+24*t;ctx.beginPath();ctx.moveTo(cx-half,y);ctx.lineTo(cx+half,y);ctx.stroke();}
+    }
+    // العناصر القادمة
+    state.objects.forEach(o=>{
+      const t=Math.max(0,Math.min(1,(o.y-horizon)/(height-horizon)));
+      const x=width*.5+(o.lane-1)*width*.29*t, scale=.35+t*.9;
+      if(o.type==='badge'){
+        ctx.save();ctx.translate(x,o.y);ctx.scale(scale,scale);ctx.fillStyle='#f4cf69';ctx.shadowColor='#ffe49a';ctx.shadowBlur=16;ctx.beginPath();ctx.arc(0,0,11,0,Math.PI*2);ctx.fill();ctx.fillStyle='#77551c';ctx.font='bold 13px Arial';ctx.textAlign='center';ctx.fillText('★',0,5);ctx.restore();
+      }else{
+        ctx.save();ctx.translate(x,o.y);ctx.scale(scale,scale);roundedRect(-18,-17,36,34,6,'#a84b38');ctx.fillStyle='#f2c7a2';ctx.fillRect(-12,-10,24,7);ctx.fillStyle='#332b24';ctx.beginPath();ctx.arc(-10,18,5,0,Math.PI*2);ctx.arc(10,18,5,0,Math.PI*2);ctx.fill();ctx.restore();
+      }
+    });
+    // القطار في أسفل المسار
+    const tx=width*.5+(state.lane-1)*width*.29*.88,ty=height*.79;
+    ctx.save();ctx.translate(tx,ty);ctx.shadowColor='rgba(0,0,0,.55)';ctx.shadowBlur=14;
+    roundedRect(-27,-24,54,42,9,'#176b43');roundedRect(-18,-42,36,23,6,'#d7e3d7');
+    ctx.fillStyle='#f0c66d';ctx.fillRect(-13,-37,26,11);ctx.fillStyle='#14251d';ctx.beginPath();ctx.arc(-17,20,7,0,Math.PI*2);ctx.arc(17,20,7,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle='#e5bd65';ctx.beginPath();ctx.moveTo(-9,-44);ctx.lineTo(0,-57);ctx.lineTo(9,-44);ctx.fill();ctx.restore();
+    if(!state.running){ctx.fillStyle='rgba(0,0,0,.35)';ctx.fillRect(0,0,width,height);ctx.fillStyle='#fff';ctx.textAlign='center';ctx.font='bold 20px Tahoma';ctx.fillText(state.score?'انتهت الرحلة — اضغط ابدأ للمحاولة مجددًا':'قطار الذاكرة',width/2,height*.22);}
+  }
+  function updateStats(){scoreEl.textContent=state.score;badgesEl.textContent=state.badges;levelEl.textContent=state.level;}
+  function endGame(){state.running=false;cancelAnimationFrame(state.raf);startBtn.textContent='أعد الرحلة';statusEl.textContent='🚧 اصطدم القطار! نتيجتك: '+state.score+' نقطة. حاول من جديد.';draw();}
+  function frame(now){if(!state.running)return;const dt=Math.min((now-state.last)/1000,.04);state.last=now;state.spawn+=dt;state.score+=Math.floor(dt*10);state.level=1+Math.floor(state.score/250);state.speed=230+(state.level-1)*24;
+    if(state.spawn>Math.max(.62,1.25-(state.level-1)*.07)){state.spawn=0;state.objects.push({lane:Math.floor(Math.random()*3),y:height*.49,type:Math.random()<.27?'badge':'block'});}
+    state.objects.forEach(o=>o.y+=state.speed*dt);
+    const trainY=height*.79;
+    for(const o of state.objects){if(!o.done&&o.lane===state.lane&&o.y>trainY-13&&o.y<trainY+18){o.done=true;if(o.type==='badge'){state.badges++;state.score+=50;statusEl.textContent='✨ أحسنت! جمعت شارة إضافية.';}else{endGame();return;}}}
+    state.objects=state.objects.filter(o=>o.y<height+30&&!o.done);updateStats();draw();state.raf=requestAnimationFrame(frame);
+  }
+  window.moveMemoryTrain=(delta)=>{if(!state.running)return;state.lane=Math.max(0,Math.min(2,state.lane+delta));draw();};
+  window.startMemoryTrain=()=>{cancelAnimationFrame(state.raf);Object.assign(state,{running:true,lane:1,score:0,badges:0,level:1,objects:[],last:performance.now(),spawn:0,speed:230});updateStats();startBtn.textContent='إعادة البدء';statusEl.textContent='انطلقت الرحلة! تفادَ الحواجز واجمع الشارات.';state.raf=requestAnimationFrame(frame);};
+  window.addEventListener('keydown',e=>{if(!state.running)return;if(e.key==='ArrowLeft'||e.key==='a')window.moveMemoryTrain(-1);if(e.key==='ArrowRight'||e.key==='d')window.moveMemoryTrain(1);});
+  canvas.addEventListener('touchstart',e=>{state.swipeX=e.touches[0].clientX;},{passive:true});
+  canvas.addEventListener('touchend',e=>{if(state.swipeX===null)return;const dx=e.changedTouches[0].clientX-state.swipeX;if(Math.abs(dx)>25)window.moveMemoryTrain(dx>0?1:-1);state.swipeX=null;},{passive:true});
+  window.addEventListener('resize',resize);resize();updateStats();
+})();
+
+// المحقق التاريخي — جمع الأدلة ثم تركيب الاستنتاج
+const historicalEvidence={
+  note:{title:'الرسالة المطوية',text:'تذكر الرسالة: «ليلة بداية نوفمبر… تحركوا في ساعة واحدة».'},
+  map:{title:'الخريطة القديمة',text:'تظهر الخريطة منطقة الأوراس ضمن مسارات التحرك الأولى.'},
+  radio:{title:'التسجيل اللاسلكي',text:'يتضمن التسجيل إشارة إلى إذاعة بيان الثورة التحريرية.'},
+  calendar:{title:'التقويم الممزق',text:'الصفحة المحددة تحمل تاريخ نوفمبر 1954، مع علامة على اليوم الأول.'}
+};
+const collectedHistoricalEvidence=new Set();
+function inspectHistoricalEvidence(key,button){
+  if(collectedHistoricalEvidence.has(key))return;
+  collectedHistoricalEvidence.add(key);button.classList.add('found');button.disabled=true;button.innerHTML='✓ تم فحص الدليل<br><small>'+historicalEvidence[key].title+'</small>';
+  const log=document.getElementById('evidenceLog');if(collectedHistoricalEvidence.size===1)log.innerHTML='';
+  const li=document.createElement('li');li.textContent=historicalEvidence[key].text;log.appendChild(li);
+  document.getElementById('evidenceCount').textContent=collectedHistoricalEvidence.size;
+  if(collectedHistoricalEvidence.size===4){
+    document.getElementById('detectivePrompt').textContent='اكتملت الأدلة. ما التاريخ الذي يجمع بين الرسالة والخريطة والتسجيل والتقويم؟';
+    const choices=document.querySelectorAll('#detectiveChoices button');choices.forEach(b=>{b.disabled=false;b.onclick=()=>solveHistoricalCase(b.textContent,b);});
+    document.getElementById('detectiveStatus').textContent='🔓 فُتحت مرحلة الاستنتاج!';
+  }else document.getElementById('detectiveStatus').textContent='تم العثور على دليل جديد. واصل التفتيش.';
+}
+function solveHistoricalCase(answer,button){
+  const status=document.getElementById('detectiveStatus');
+  if(answer.trim()==='1 نوفمبر 1954'){
+    status.textContent='🏆 أحسنت! حللت القضية بنجاح: هذا هو تاريخ اندلاع الثورة التحريرية.';
+    document.querySelectorAll('#detectiveChoices button').forEach(b=>b.disabled=true);
+    button.style.background='#167b49';button.style.borderColor='#8cf0ae';
+  }else status.textContent='ليس هذا التاريخ. أعد قراءة الأدلة الأربعة وحاول مرة أخرى.';
+}
+function resetHistoricalDetective(){
+  collectedHistoricalEvidence.clear();document.getElementById('evidenceCount').textContent='0';
+  document.getElementById('evidenceLog').innerHTML='<li>لم تُجمع أدلة بعد. ابدأ بتفتيش الغرفة.</li>';
+  document.getElementById('detectivePrompt').textContent='اجمع الأدلة الأربعة أولًا حتى تتمكن من تقديم استنتاجك.';
+  document.getElementById('detectiveStatus').textContent='';
+  document.querySelectorAll('#detectiveChoices button').forEach(b=>{b.disabled=true;b.style.background='';b.style.borderColor='';});
+  document.querySelectorAll('.evidence-item').forEach(b=>{b.disabled=false;b.classList.remove('found');const k=b.dataset.clue;const labels={note:'📜 رسالة مطوية<br><small>افحص الورقة</small>',map:'🗺️ خريطة قديمة<br><small>افحص العلامات</small>',radio:'📻 جهاز لاسلكي<br><small>افحص التسجيل</small>',calendar:'🗓️ تقويم ممزق<br><small>افحص التاريخ</small>'};b.innerHTML=labels[k];});
+}
+
+</script>
 </body>
 </html>
